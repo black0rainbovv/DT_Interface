@@ -2,7 +2,6 @@ import serial
 
 class Device():
 
-
     can = serial.Serial()
     can.baudrate = 115200
     can.timeout = 0.5
