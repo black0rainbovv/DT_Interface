@@ -1,0 +1,81 @@
+#:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
+
+<LoginScreenView>
+    hero_to: hero_to
+
+    CommonLabel:
+        x: field_login.x
+        y: root.height - root.SHIFT_Y
+        opacity: root.OPACITY
+        text: "Вход"
+
+    FillField:
+        id: field_login
+        opacity: root.OPACITY
+        hint_text: "Имя"
+        icon_left: "account"
+        hint_text_color_normal: 'white'
+        text_color_normal: 'white'
+        helper_text_color_normal: 'white'
+        line_color_normal: 'white'
+        pos:
+            root.center[0] - root.FIELD_WIDTH / 2, \
+            root.center[1] + root.SHIFT_Y / 4
+
+    FillField:
+        id: field_password
+        opacity: root.OPACITY
+        hint_text: "Пароль"
+        icon_left: "lock"
+        hint_text_color_normal: 'white'
+        text_color_normal: 'white'
+        helper_text_color_normal: 'white'
+        line_color_normal: 'white'
+        password: True
+        pos:
+            root.center[0] - root.FIELD_WIDTH / 2, \
+            root.center[1] - root.SHIFT_Y / 4
+
+    MDFillRoundFlatButton:
+        id: sign_in_button
+        text: "Войти"
+        opacity: root.OPACITY
+        size_hint_x: None
+        -width: field_password.width
+        pos_hint: {"center_x": .5}
+        font_size: "24sp"
+        font_name: "assets/fonts/futuralightc.otf"
+        md_bg_color: .8, .8, .8, 1
+        text_color: app.theme_cls.primary_color
+        ripple_color: app.theme_cls.primary_color[:-1] + [.4]
+        y: root.SHIFT_Y
+
+    # MDIconButton:
+    #     id: back_btn
+    #     icon: "arrow-left-circle-outline"
+    #     icon_size: "64sp"
+    #     pos_hint: {"top": 1}
+    #     theme_icon_color: "Custom"
+    #     icon_color: "#006492"
+    #     on_release:root.back_to_first_screen()
+
+    MDHeroTo:
+        id:hero_to
+        size_hint: None, None
+        size: "56dp", "56dp"
+        pos: root.width - (self.width + dp(12)), root.height - (self.height + dp(12))
+
+    MDBoxLayout:
+        pos_hint: {'center_x': .5, 'center_y': .04}
+        size_hint_y: .1
+            
+        MDRaisedButton:
+            size_hint_x: .3
+            pos_hint: {'center_x': .1, 'center_y': .5}
+            text: 'Назад'
+            md_bg_color: '#001b31'
+            line_color: (0.2, 0.2, 0.2, 0.8)
+            font_size: '24sp'
+            font_name: 'assets/fonts/futuralightc.otf'
+            font_style: 'H5'
+            on_release: root.switch_screen('main screen')

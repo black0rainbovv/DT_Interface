@@ -1,0 +1,318 @@
+#:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
+#:import ScrollEffect  kivy.effects.scroll.ScrollEffect
+
+<TextField@MDTextField>:
+    size_hint_x: None
+    multiline: False
+    hint_text_color_normal: 'white'
+    text_color_normal: 'white'
+    helper_text_color_normal: 'white'
+    line_color_normal: 'white'
+    input_type: 'number'
+    input_filter: 'int'
+
+<FlatButton@MDRoundFlatButton>:
+    size_hint_x: None
+    text_color: 'white'
+    
+<ScrollBox@MDBoxLayout>: 
+    line_color: (0.5, 0.5, 0.5, 0.5)
+    size_hint_x: None
+    width: self.minimum_width
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    orientation: 'vertical'
+    padding: [50, 100, 50, 100]
+    spacing: 3
+
+<StepLabel@MDLabel>:
+    pos_hint: {'center_x': 0.7, 'center_y': 1}
+    color: 'white'
+    font_size: '22sp'
+
+<EditScreenView>
+
+    GridLayout:
+        rows: 3
+        
+        AnchorLayout:
+            size_hint: 1, 0.15
+            MDTopAppBar:
+                id: login_top_bar
+                title: root.read_number()
+                md_bg_color:'#001b31'
+                # left_action_items: 
+                #     [
+                #     ['plus-circle-outline', lambda x: root.callback(x), 'Добавить шаг'],
+                #     ['minus-circle-outline', lambda x: root.callback(x), 'Удалить последний шаг']
+                #     ]
+                right_action_items: 
+                    [
+                    ['help-circle', lambda x: root.callback(x), 'Help'],
+                    ['arrow-up-drop-circle-outline', lambda x: root.callback(x), 'Открыть\Закрыть'],
+                    ['power', lambda x: root.callback(x), 'Turning off']
+                    ]
+                    
+        ScrollView:
+            do_scroll_y: False
+            do_scroll_x: True
+
+            GridLayout:
+                size_hint_x: None
+                size_hint_y: 1
+                width: self.minimum_width
+                cols: 40
+
+                ScrollBox:
+                    id: box_0
+                    opacity: 1
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 1'
+
+                    TextField:
+                        id: temp_field_0
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_0
+                        hint_text: 'Время'
+
+
+                ScrollBox:
+                    id: box_1
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 2'
+
+                    TextField:
+                        id: temp_field_1
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_1
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_2
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 3'
+
+                    TextField:
+                        id: temp_field_2
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_2
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_3
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 4'
+                    
+                    TextField:
+                        id: temp_field_3
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_3
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_4
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 5'
+
+                    TextField:
+                        id: temp_field_4
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_4
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_5
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 6'                    
+
+                    TextField:
+                        id: temp_field_5
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_5
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_6
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 7'
+
+                    TextField:
+                        id: temp_field_6
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_6
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_7
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 8'
+
+                    TextField:
+                        id: temp_field_7
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_7
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_8
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 9'
+
+                    TextField:
+                        id: temp_field_8
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_8
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_9
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 10'
+                    
+                    TextField:
+                        id: temp_field_9
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_9
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_10
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 11'
+
+                    TextField:
+                        id: temp_field_10
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_10
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    id: box_11
+                    opacity: 0
+                    disabled: True
+                    size_hint: None, 0
+
+                    StepLabel:
+                        text: 'Шаг 12'                    
+
+                    TextField:
+                        id: temp_field_11
+                        hint_text: 'Температура'
+
+                    TextField:
+                        id: time_field_11
+                        hint_text: 'Время'
+
+                ScrollBox:
+                    padding: [50, 50, 50, 135]
+
+        MDBoxLayout:
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size_hint_y: .1
+
+            MDRaisedButton:
+                size_hint_x: .3
+                pos_hint: {'center_x': .1, 'center_y': .5}
+                text: 'Запуск'
+                md_bg_color: '#001b31'
+                line_color: (0.2, 0.2, 0.2, 0.8)
+                font_size: '24sp'
+                font_name: 'assets/fonts/futuralightc.otf'
+                font_style: 'H5'
+                on_release: root.launch_prog()
+
+            MDRaisedButton:
+                size_hint_x: .3
+                pos_hint: {'center_x': .1, 'center_y': .5}
+                text: 'Добавить шаг'
+                md_bg_color: '#001b31'
+                line_color: (0.2, 0.2, 0.2, 0.8)
+                font_size: '24sp'
+                font_name: 'assets/fonts/futuralightc.otf'
+                font_style: 'H5'
+                on_release: root.add_step()
+
+            MDRaisedButton:
+                size_hint_x: .3
+                pos_hint: {'center_x': 1, 'center_y': .5}
+                text: 'Удалить шаг'
+                md_bg_color: '#001b31'
+                line_color: (0.2, 0.2, 0.2, 0.8)
+                font_size: '24sp'
+                font_name: 'assets/fonts/futuralightc.otf'
+                font_style: 'H5'
+                on_release: root.remove_step()
+
+            MDRaisedButton:
+                size_hint_x: .3
+                pos_hint: {'center_x': 1, 'center_y': .5}
+                text: 'Назад'
+                md_bg_color: '#001b31'
+                line_color: (0.2, 0.2, 0.2, 0.8)
+                font_size: '24sp'
+                font_name: 'assets/fonts/futuralightc.otf'
+                font_style: 'H5'
+                on_release: root.switch_screen('main screen')

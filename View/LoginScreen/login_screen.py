@@ -1,0 +1,50 @@
+from kivy.animation import Animation
+from kivy.metrics import dp
+from kivy.properties import NumericProperty
+
+from View.base_screen import BaseScreenView
+from View.LoginScreen.components import FillField, CommonLabel
+
+class LoginScreenView(BaseScreenView):
+    """Implements the login start screen in the user application."""
+
+    OPACITY = NumericProperty(0)
+    SHIFT_Y = NumericProperty(dp(0))
+    FIELD_WIDTH = NumericProperty(dp(320))
+    FIELD_HEIGHT = NumericProperty(dp(52))
+    PADDING = NumericProperty(dp(24))
+
+    def on_enter(self, *args):
+    #    """
+    #    Event called when the screen is displayed: the entering animation is
+    #    complete.
+    #    """
+#
+    #    animation = Animation(SHIFT_Y=dp(140), d=1, t="in_out_quart")
+    #    animation.bind(on_complete=self.animation_bg_zoom)
+    #    animation.start(self)
+        
+        if not self.app.enable_animation:
+            animation = Animation(SHIFT_Y=dp(140), d=1, t="in_out_quart")
+            animation.start(self)
+        else:
+            super().on_enter()
+
+        Animation(OPACITY=1, d=3).start(self)
+#
+    #def animation_bg_zoom(self, *args):
+    #    Animation(height=self.ids.bg.height + self.SHIFT_Y, d=2, t="in_out_quart").start(
+    #        self.ids.bg
+    #    )
+
+    def back_to_first_screen(self):
+        #self.manager_screens.current_hero = self.ids.hero.tag
+        #self.manager_screens.current = "main screen"
+        self.switch_screen("main screen")
+
+    def model_is_changed(self) -> None:
+        """
+        Called whenever any change has occurred in the data model.
+        The view in this method tracks these changes and updates the UI
+        according to these changes.
+        """
