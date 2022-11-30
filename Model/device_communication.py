@@ -1,5 +1,6 @@
 import serial
 
+
 class Device():
 
     can = serial.Serial()
@@ -26,7 +27,7 @@ class Device():
         self.can.close()
         return data.decode('UTF-8')
 
-    def get_device_number(self):
+    def get_serial_number(self):
         serial_number = self.can_message('FSN', self.optical_controller)
         return serial_number[4:10]
 

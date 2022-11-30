@@ -1,12 +1,15 @@
 from View.base_screen import BaseScreenView
 
-import serial
 import os
 
 
 class MainScreenView(BaseScreenView):
-    '''Implements the login start screen in the user application.'''       
-        
+    '''Implements the login start screen in the user application.'''
+
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.model.add_observer(self)
+        self.ids.maintopbar.title = self.model.set_serial_number()
 
     def model_is_changed(self) -> None:
 
@@ -23,6 +26,7 @@ class MainScreenView(BaseScreenView):
         """ 
 
     def callback(self, instance):
-        if instance.icon == 'power':
-            winpath = os.environ['windir']
-            os.system(winpath + r'\system32\rundll32 user32.dll, LockWorkStation')        
+        # if instance.icon == 'power':
+            pass
+            # winpath = os.environ['windir']
+            # os.system(winpath + r'\system32\rundll32 user32.dll, LockWorkStation') 
