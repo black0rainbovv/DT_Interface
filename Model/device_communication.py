@@ -38,7 +38,7 @@ class Device():
         serial_number = self.can_message('FSN', self._optical_controller)
         return serial_number[4:10]
 
-    def get_device_starus(self):
+    def get_device_status(self):
         device_status = self.can_message('RDEV', self._temperature_controller)
         return device_status[4:6]
 

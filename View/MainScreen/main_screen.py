@@ -1,7 +1,5 @@
 from View.base_screen import BaseScreenView
 
-import os
-
 
 class MainScreenView(BaseScreenView):
     '''Implements the login start screen in the user application.'''
@@ -9,7 +7,8 @@ class MainScreenView(BaseScreenView):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.model.add_observer(self)
-        self.ids.maintopbar.title = self.model.set_serial_number()
+        self.ids.maintopbar.title = self.controller.get_serial_number()
+        self.controller.get_device_status()
 
     def model_is_changed(self) -> None:
 
@@ -18,7 +17,13 @@ class MainScreenView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         '''
+        status = self.model.device_status
 
+        if int(status) == 5:
+            self.ids.device_status.text = 'Состояние прибора: готов'
+        else:
+            self.ids.device_status.text = 'Состояние прибора: прогрев'
+        
     def on_enter(self, *args):
         """
         Event called when the screen is displayed: the entering animation is
@@ -26,7 +31,5 @@ class MainScreenView(BaseScreenView):
         """ 
 
     def callback(self, instance):
-        # if instance.icon == 'power':
-            pass
-            # winpath = os.environ['windir']
-            # os.system(winpath + r'\system32\rundll32 user32.dll, LockWorkStation') 
+        if instance.icon == 'power':
+            quit()

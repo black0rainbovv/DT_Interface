@@ -16,3 +16,9 @@ class MainScreenController:
 
     def get_view(self) -> MainScreenView:
         return self.view
+
+    def get_serial_number(self):
+        return self.model.get_serial_number()
+
+    def get_device_status(self):
+        self.model.start_device_status_thread()

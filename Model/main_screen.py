@@ -1,5 +1,7 @@
 from Model.base_model import BaseScreenModel
 from Model.device_communication import Device
+from threading import Thread
+from time import sleep
 
 
 class MainScreenModel(BaseScreenModel):
@@ -10,8 +12,8 @@ class MainScreenModel(BaseScreenModel):
 
     def __init__(self) -> None:
         super().__init__()
-        self._serial_number = ''
         self._observers = []
+        self.device_status = '0'
 
     def add_observer(self, observer):
         self._observers.append(observer)
@@ -25,6 +27,21 @@ class MainScreenModel(BaseScreenModel):
 
     device = Device()
 
-    def set_serial_number(self):
-        self._serial_number = self.device.get_serial_number()
-        return self._serial_number
+    def get_serial_number(self):
+        return self.device.get_serial_number()
+
+    def start_device_status_thread(self):
+        Thread(target=self.device_status_thread).start()
+
+    def device_status_thread(self):
+        data = '1'
+        try:
+            while int(data) != 5:
+                data = self.device.get_device_status()
+                print('From device: ', data)
+                self.device_status = data
+                self.notify_observers()
+                sleep(1)
+            
+        except ValueError:
+            print('Model: ' ,ValueError)
