@@ -18,6 +18,7 @@ class MainScreenView(BaseScreenView):
         according to these changes.
         '''
         status = self.model.device_status
+        tb_temperature = self.model.tb_temperature[0]
 
         if int(status) == 5:
             self.ids.device_status.text = 'Состояние прибора: готов'
@@ -30,6 +31,15 @@ class MainScreenView(BaseScreenView):
         complete.
         """ 
 
+    def run_last_prog(self):
+        answer = self.controller.run_last_prog()
+        if answer == '0':
+            print('Запустилась')
+        else:
+            print('Не запустилась')
+
     def callback(self, instance):
         if instance.icon == 'power':
             quit()
+        if instance.icon == 'arrow-up-drop-circle-outline':
+            self.controller.tb_movement()

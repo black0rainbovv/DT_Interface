@@ -22,3 +22,9 @@ class MainScreenController:
 
     def get_device_status(self):
         self.model.start_device_status_thread()
+
+    def tb_movement(self):
+        self.model.tb_movement()
+
+    def run_last_prog(self):
+        return self.model.run_last_prog()

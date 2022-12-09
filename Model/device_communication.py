@@ -1,4 +1,5 @@
 import serial
+
 from serial import SerialException
 
 
@@ -45,21 +46,25 @@ class Device():
     def get_tb_temperature(self):
         data = self.can_message('XM', self._temperature_controller)
         data = data[4:].split(' ')
-        xm_answer = []
 
-        for i in range(6):
-            data_slice_1 = data[i][:2]
-            data_slice_2 = data[i][2:]
-            xm_answer.append(f'{data_slice_1}.{data_slice_2}')
-        return xm_answer
+        if len(data) > 2:
+            xm_answer = []
+
+            for i in range(6):
+                data_slice_1 = data[i][:2]
+                data_slice_2 = data[i][2:]
+                xm_answer.append(f'{data_slice_1}.{data_slice_2}')
+            return xm_answer
 
     def get_heat_sink_temperature(self):
         data = self.can_message('XTP', self._temperature_controller)
         data = data[4:].split(' ')
         data = data[0]
-        data_slice_1 = data[:2]
-        data_slice_2 = data[2:]
-        return f'{data_slice_1}.{data_slice_2}'
+
+        if len(data) > 2:
+            data_slice_1 = data[:2]
+            data_slice_2 = data[2:]
+            return f'{data_slice_1}.{data_slice_2}'
 
     def get_hot_lid_temperature(self):
         data = self.can_message('XTP', self._temperature_controller)

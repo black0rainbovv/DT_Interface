@@ -13,7 +13,8 @@ class MainScreenModel(BaseScreenModel):
     def __init__(self) -> None:
         super().__init__()
         self._observers = []
-        self.device_status = '0'
+        self.device_status = '1'
+        self.tb_temperature = []
 
     def add_observer(self, observer):
         self._observers.append(observer)
@@ -31,17 +32,31 @@ class MainScreenModel(BaseScreenModel):
         return self.device.get_serial_number()
 
     def start_device_status_thread(self):
-        Thread(target=self.device_status_thread).start()
+        Thread(target=self.device_readiness).start()
+        Thread(target=self.device_tb_temperature).start()
 
-    def device_status_thread(self):
-        data = '1'
+    def device_readiness(self):
         try:
-            while int(data) != 5:
-                data = self.device.get_device_status()
-                print('From device: ', data)
-                self.device_status = data
+            while int(self.device_status) != 5:
+                self.device_status = self.device.get_device_status()
                 self.notify_observers()
                 sleep(1)
             
         except ValueError:
             print('Model: ' ,ValueError)
+
+    def device_tb_temperature(self):
+        try:
+            while True:
+                self.tb_temperature = self.device.get_tb_temperature()
+                self.notify_observers()
+                sleep(1)
+
+        except Exception:
+            print('Model: ' ,Exception)
+
+    def tb_movement(self):
+        self.device.open_close_tb()
+
+    def run_last_prog(self):
+        return self.device.start_run()
