@@ -6,6 +6,8 @@ from Model.main_screen import MainScreenModel
 from Controller.main_screen import MainScreenController
 from Model.login_screen import LoginScreenModel
 from Controller.login_screen import LoginScreenController
+from Model.setting_screen import SettingScreenModel
+from Controller.setting_screen import SettingScreenController
 
 screens = {
     "main screen": {
@@ -16,5 +18,10 @@ screens = {
     "login screen": {
         "model": LoginScreenModel,
         "controller": LoginScreenController
+    },
+
+    "setting screen": {
+        "model": SettingScreenModel,
+        "controller": SettingScreenController
     }
 }

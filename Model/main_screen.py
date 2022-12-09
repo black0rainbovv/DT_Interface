@@ -52,8 +52,8 @@ class MainScreenModel(BaseScreenModel):
                 self.notify_observers()
                 sleep(1)
 
-        except Exception:
-            print('Model: ' ,Exception)
+        except ValueError:
+            print('Model: ' ,ValueError)
 
     def tb_movement(self):
         self.device.open_close_tb()
