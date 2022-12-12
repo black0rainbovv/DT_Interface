@@ -4,6 +4,7 @@ from serial import SerialException
 
 
 class Device():
+    '''Executes the exchange of commands with the device.'''
 
     def __init__(self) -> None:
         self._can = serial.Serial()
@@ -46,15 +47,17 @@ class Device():
     def get_tb_temperature(self):
         data = self.can_message('XM', self._temperature_controller)
         data = data[4:].split(' ')
+        xm_answer = []
 
         if len(data) > 2:
-            xm_answer = []
+            data[5] = data[5][:4]
 
             for i in range(6):
                 data_slice_1 = data[i][:2]
                 data_slice_2 = data[i][2:]
                 xm_answer.append(f'{data_slice_1}.{data_slice_2}')
-            return xm_answer
+
+        return xm_answer
 
     def get_heat_sink_temperature(self):
         data = self.can_message('XTP', self._temperature_controller)

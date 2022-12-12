@@ -18,7 +18,6 @@ class MainScreenView(BaseScreenView):
         according to these changes.
         '''
         status = self.model.device_status
-        tb_temperature = self.model.tb_temperature[0]
 
         if int(status) == 5:
             self.ids.device_status.text = 'Состояние прибора: готов'
