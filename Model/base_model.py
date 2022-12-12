@@ -5,10 +5,14 @@
 # model when they are notified (in this case, it is the `model_is_changed`
 # method). For this, observers must be descendants of an abstract class,
 # inheriting which, the `model_is_changed` method must be overridden.
+from Model.device_communication import Device
 
 
 class BaseScreenModel:
     """Implements a base class for model modules."""
+
+    def __init__(self) -> None:
+        self.serial_number = ''
 
     _observers = []
 
