@@ -1,6 +1,5 @@
 from View.base_screen import BaseScreenView
-from View.MainScreen.components.maincard.maincard import MainCard
-from View.MainScreen.components.mainlabel.mainlabel import MainLabel
+from View.MainScreen.components import MainLabel, MainCard
 
 
 class MainScreenView(BaseScreenView):
