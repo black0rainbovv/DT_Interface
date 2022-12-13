@@ -58,14 +58,8 @@
                     size_hint_y: 8
                     pos_hint: {"top": 1}
 
-                MDLabel:
-                    id: label
+                MainLabel:
                     text: "Войти"
-                    size_hint_y: 2
-                    padding_x: 12
-                    font_size: "18sp"
-                    font_name: "assets/fonts/futuralightc.otf"
-                    color: "454749"
 
             MainCard:
 
@@ -74,29 +68,20 @@
                     radius: 24, 24, 0, 0
                     size_hint_y: 8
                     pos_hint: {"top": 1}
-                MDLabel:
-                    id: label
+
+                MainLabel:
                     text: "Начало работы"
-                    size_hint_y: 2
-                    padding_x: 12
-                    font_size: "24sp"
-                    font_name: "assets/fonts/futuralightc.otf"
-                    color: "454749"
 
             MainCard:
+                on_release: root.switch_screen("setting screen")
 
                 FitImage:
                     source: "assets/images/settings.png"
                     radius: 24, 24, 0, 0
                     size_hint_y: 8
                     pos_hint: {"top": 1}
-                MDLabel:
-                    id: label
+
+                MainLabel:
                     text: "Настройки"
-                    size_hint_y: 2
-                    padding_x: 12
-                    font_size: "18sp"
-                    font_name: "assets/fonts/futuralightc.otf"
-                    color: "454749"
 
         
