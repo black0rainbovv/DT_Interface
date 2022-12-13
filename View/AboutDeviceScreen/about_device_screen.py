@@ -1,4 +1,5 @@
 from View.base_screen import BaseScreenView
+from View.AboutDeviceScreen.components import AboutDeviceLabel
 
 
 class AboutDeviceScreenView(BaseScreenView):

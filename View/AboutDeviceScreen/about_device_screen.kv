@@ -20,6 +20,87 @@
             orientation: "vertical"
             pos_hint: {"center_x": 0.5,"center_y": 0.5}
             padding: [80, 0, 0, 0]
+            spacing: 12
+
+            MDBoxLayout:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            
+                AboutDeviceLabel:
+                    text: "Серийный номер:"
+
+                AboutDeviceLabel:
+                    id: serial_number
+                    text: "A5K999"
+
+            MDBoxLayout:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            
+                AboutDeviceLabel:
+                    text: "Тип термоблока:"
+
+                AboutDeviceLabel:
+                    id: tb_type
+                    text: "B96A"
+
+            MDBoxLayout:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            
+                AboutDeviceLabel:
+                    text: "Температурная прошивка:"
+
+                AboutDeviceLabel:
+                    id: fver_temperature
+                    text: "STAMP_7.00_23/11/22"
+
+            MDBoxLayout:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            
+                AboutDeviceLabel:
+                    text: "Моторная прошивка:"
+
+                AboutDeviceLabel:
+                    id: fver_motor
+                    text: "CMOT 7.06 06/12/2022"
+
+            MDBoxLayout:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            
+                AboutDeviceLabel:
+                    text: "Оптическая прошивка:"
+
+                AboutDeviceLabel:
+                    id: fver_optical
+                    text: "OPTICS 3.12.96 28/03/16"
+
+            MDBoxLayout:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            
+                AboutDeviceLabel:
+                    text: "Дисплейная прошивка:"
+
+                AboutDeviceLabel:
+                    id: fver_display
+                    text: "DISPLAY 4.28.Ru 18/12/19 FPGA 3.20"
+
+            MDBoxLayout:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            
+                AboutDeviceLabel:
+                    text: "Версия интерфейса:"
+
+                AboutDeviceLabel:
+                    id: fver_interface
+                    text: "1.0.0   13.12.2022"
+
+            MDBoxLayout:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            
+                AboutDeviceLabel:
+                    text: "Время наработки:"
+
+                AboutDeviceLabel:
+                    id: runtime
+                    text: "1900 часов"
 
         MDBoxLayout:
             size_hint_y: 0.15

@@ -1,0 +1,1 @@
+from .aboutdevicelabel.aboutdevicelabel import AboutDeviceLabel
