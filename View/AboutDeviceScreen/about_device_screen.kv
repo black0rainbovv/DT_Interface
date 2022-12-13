@@ -1,0 +1,26 @@
+#:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
+
+<AboutDeviceScreenView>
+
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: 22
+        spacing: 12
+
+        MDIconButton:
+            id: back_btn
+            icon: "arrow-left-circle-outline"
+            icon_size: "64sp"
+            pos_hint: {"top": 1}
+            theme_icon_color: "Custom"
+            icon_color: "#006492"
+            on_release: root.switch_screen("setting screen")
+
+        MDBoxLayout:
+            orientation: "vertical"
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            padding: [80, 0, 0, 0]
+
+        MDBoxLayout:
+            size_hint_y: 0.15
+            
