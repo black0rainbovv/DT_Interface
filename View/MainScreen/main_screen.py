@@ -1,4 +1,5 @@
 from View.base_screen import BaseScreenView
+from View.MainScreen.components.maincard.maincard import MainCard
 
 
 class MainScreenView(BaseScreenView):
@@ -18,6 +19,7 @@ class MainScreenView(BaseScreenView):
         according to these changes.
         '''
         status = self.model.device_status
+        self.ids.temperature.text = f'Температура термоблока: {self.model.tb_temperature[0]}°C'
 
         if int(status) == 5:
             self.ids.device_status.text = 'Состояние прибора: готов'

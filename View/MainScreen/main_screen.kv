@@ -1,129 +1,102 @@
 #:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
 
 <MainScreenView>
-
         
     MDBoxLayout:
-        orientation: 'vertical'
-        pos_hint: {'center_x': .5, 'center_y': .5}
-
+        orientation: "vertical"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
         
         MDTopAppBar:
             id: maintopbar
             line_color: (0.2, 0.2, 0.2, 0.8)
-            md_bg_color:'#001b31'
+            md_bg_color:"#001b31"
             right_action_items: 
                 [
-                ['help-circle', lambda x: root.callback(x), 'Помощь'],
-                ['arrow-up-drop-circle-outline', lambda x: root.callback(x), 'Открыть\Закрыть'],
-                ['power', lambda x: root.callback(x), 'Выключение']
-                ]
-                        
+                ["help-circle", lambda x: root.callback(x), "Помощь"],
+                ["arrow-up-drop-circle-outline", lambda x: root.callback(x), "Открыть\Закрыть"],
+                ["power", lambda x: root.callback(x), "Выключение"]
+                ]  
 
         MDBoxLayout:
-            orientation: 'vertical'
-            pos_hint: {'center_x': .2,'center_y': .45}
-            size_hint: .4, .2
-            # md_bg_color: 1, 1, 1, .5
+            pos_hint: {"center_x": 0.5,"center_y": 0.45}
+            size_hint: 1, 0.2
+            # md_bg_color: 1, 1, 1, 0.5
             height: 10
             padding: [30, 0, 0, 0]
 
-
             MDLabel:
                 id: device_status
-                text: 'Состояние прибора:'
-                color: 'white'
-                font_size: '24sp'
-                font_name: 'assets/fonts/futuralightc.otf'
-                font_style: 'H6'
+                pos_hint: {'left': 1}
+                text: "Состояние прибора:"
+                color: "white"
+                font_size: "24sp"
+                font_name: "assets/fonts/futuralightc.otf"
+                font_style: "H6"
 
+            MDLabel:
+                id: temperature
+                pos_hint: {'right': 1}
+                text: "Температура термоблока:"
+                color: "white"
+                font_size: "24sp"
+                font_name: "assets/fonts/futuralightc.otf"
+                font_style: "H6"
 
         MDBoxLayout:
-            orientation: 'vertical'
             id: box
-            spacing: '32dp'
-            padding: '48dp'
-            pos_hint: {'center_x': .5, 'center_y': .8}
-            size_hint: .4, .6
+            spacing: "32dp"
+            padding: "48dp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint_y:1
 
-                
-            MDCard:
-                orientation: 'vertical'
-                pos_hint: {'center_x': .5, 'center_y': .5}
-                size_hint: .8, .1
-                padding: 3
-                radius: 12
-                line_color: (0.2, 0.2, 0.2, 0.8)
-                style: 'filled'
-                md_bg_color:'#E2E2E5'
-                ripple_behavior: True
-                unfocus_color: 'darkgrey'
-                focus_color: 'grey'
-                    
-                
+            MainCard:
+                on_release: root.switch_screen("login screen")
+
                 FitImage:
-                    source: 'assets/images/amp_curve_2.png'
-                    radius: 12, 12, 0, 0
-                    pos_hint: {'top': 1}
-                    size_hint_y: 10
+                    source: "assets/images/account_1.png"
+                    radius: 24, 24, 0, 0
+                    size_hint_y: 8
+                    pos_hint: {"top": 1}
 
                 MDLabel:
-                    id: run_label
-                    text: 'Запуск'
-                    pos_hint: {'center_x': .65, 'center_y': .5}
-                    size_hint_y: 2.5
-                    padding_x: 20
-                    font_size: '28sp'
-                    font_name: 'assets/fonts/futuralightc.otf'
-                    color: '454749'
+                    id: label
+                    text: "Войти"
+                    size_hint_y: 2
+                    padding_x: 12
+                    font_size: "18sp"
+                    font_name: "assets/fonts/futuralightc.otf"
+                    color: "454749"
 
+            MainCard:
 
-        MDBoxLayout:
-            orientation: 'horizontal'
-            pos_hint: {'center_x': .5, 'center_y': .5}
-            size_hint: 1, .1
-            line_color: (0.5, 0.5, 0.5, 0.5)
+                FitImage:
+                    source: "assets/images/amp_curve_2.png"
+                    radius: 24, 24, 0, 0
+                    size_hint_y: 8
+                    pos_hint: {"top": 1}
+                MDLabel:
+                    id: label
+                    text: "Начало работы"
+                    size_hint_y: 2
+                    padding_x: 12
+                    font_size: "24sp"
+                    font_name: "assets/fonts/futuralightc.otf"
+                    color: "454749"
 
+            MainCard:
 
-            MDRaisedButton:
-                text: 'Войти'
-                md_bg_color: '#001b31'
-                line_color: (0.2, 0.2, 0.2, 0.8)
-                size_hint: 1, 1
-                font_size: '24sp'
-                font_name: 'assets/fonts/futuralightc.otf'
-                font_style: 'H5'
-                on_release: root.switch_screen('login screen')
-
-
-            MDRaisedButton:
-                text: 'Редактор протокола'
-                md_bg_color: '#001b31'
-                line_color: (0.2, 0.2, 0.2, 0.8)
-                size_hint: 1, 1
-                font_size: '24sp'
-                font_name: 'assets/fonts/futuralightc.otf'
-                font_style: 'H5'
-
-
-            MDRaisedButton:
-                text: 'Запустить последний'
-                md_bg_color: '#001b31'
-                line_color: (0.2, 0.2, 0.2, 0.8)
-                size_hint: 1, 1
-                font_size: '24sp'
-                font_name: 'assets/fonts/futuralightc.otf'
-                font_style: 'H5'
-
-
-            MDRaisedButton:
-                text: 'Настройки'
-                md_bg_color: '#001b31'
-                line_color: (0.2, 0.2, 0.2, 0.8)
-                size_hint: 1, 1
-                font_size: '24sp'
-                font_name: 'assets/fonts/futuralightc.otf'
-                font_style: 'H5'
-
+                FitImage:
+                    source: "assets/images/settings.png"
+                    radius: 24, 24, 0, 0
+                    size_hint_y: 8
+                    pos_hint: {"top": 1}
+                MDLabel:
+                    id: label
+                    text: "Настройки"
+                    size_hint_y: 2
+                    padding_x: 12
+                    font_size: "18sp"
+                    font_name: "assets/fonts/futuralightc.otf"
+                    color: "454749"
 
         
