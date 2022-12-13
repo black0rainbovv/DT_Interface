@@ -1,4 +1,6 @@
 from View.base_screen import BaseScreenView
+from View.SettingScreen.components.settingcard.settingcard import SettingCard
+from View.SettingScreen.components.settinglabel.settinglabel import SettingLabel 
 
 
 class SettingScreenView(BaseScreenView):

@@ -17,10 +17,28 @@
             on_release: root.switch_screen("main screen")
 
         MDBoxLayout:
-            orientation: "horizontal"
-            size_hint: 0.4, None
-            height: 32
-            padding: [48, 0, 0, 0]
+            orientation: "vertical"
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            padding: [80, 0, 0, 0]
+            
+            SettingCard:
+
+                FitImage:
+                    source: "assets/images/dtprime.png"
+                    radius: 24, 24, 0, 0
+                    size_hint_y: 3
+                    pos_hint: {"top": 1}
+
+                SettingLabel:
+                    text: "О приборе"
 
         MDBoxLayout:
+            size_hint_y: 0.15
+
+            MDLabel:
+                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+                text: "ООО «НПО ДНК - Технология»"
+                color: "white"
+                font_name: "assets/fonts/futuralightc.otf"
+                font_size: "36sp"
             

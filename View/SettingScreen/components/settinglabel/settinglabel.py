@@ -6,8 +6,8 @@ class SettingLabel(MDLabel):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.size_hint_y = 2
+        self.size_hint_y = 0.3
         self.padding_x = 12
-        self.font_size = "18sp"
+        self.font_size = "24sp"
         self.font_name = "assets/fonts/futuralightc.otf"
         self.color = "454749"
