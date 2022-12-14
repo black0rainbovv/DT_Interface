@@ -16,6 +16,15 @@ class MainScreenModel(BaseScreenModel):
         self.device_status = ''
         self.tb_temperature = []
         self._device = Device()
+        self._screen_is_active = True
+
+    @property
+    def screen_is_active(self):
+        return self._screen_is_active
+
+    @screen_is_active.setter
+    def screen_is_active(self, state):
+        self._screen_is_active = state
 
     def get_device_serial_number(self):
         return self._device.get_serial_number()        
@@ -25,12 +34,11 @@ class MainScreenModel(BaseScreenModel):
 
     def device_info(self):
         try:
-            while True:
+            while self.screen_is_active:
                 self.tb_temperature = self._device.get_tb_temperature()
                 sleep(0.05)
                 self.device_status = self._device.get_device_status()
                 self.notify_observers('main screen')
-                sleep(1)
 
         except ValueError:
             print('Model device_info: ' ,ValueError)

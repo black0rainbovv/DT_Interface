@@ -25,7 +25,7 @@ class AboutDeviceScreenView(BaseScreenView):
 
         self.ids.serial_number.text = self.model.serial_number
         self.ids.tb_number.text = self.model.tb_number
-        self.ids.tb_number.text = self.model.tb_type
+        self.ids.tb_type.text = self.model.tb_type
         self.ids.runtime.text = f'{self.model.runtime} часов'
         
     def on_enter(self, *args):

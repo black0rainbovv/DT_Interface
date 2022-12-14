@@ -9,7 +9,6 @@ class MainScreenView(BaseScreenView):
         super().__init__(**kw)
         self.model.add_observer(self)
         self.ids.maintopbar.title = self.controller.get_serial_number()
-        self.controller.get_device_status()
 
     def model_is_changed(self) -> None:
 
@@ -31,16 +30,14 @@ class MainScreenView(BaseScreenView):
         Event called when the screen is displayed: the entering animation is
         complete.
         """ 
-
-    def run_last_prog(self):
-        answer = self.controller.run_last_prog()
-        if answer == '0':
-            print('Запустилась')
-        else:
-            print('Не запустилась')
+        self.set_screen_is_active(True)
+        self.controller.get_device_status()
 
     def callback(self, instance):
         if instance.icon == 'power':
             quit()
         if instance.icon == 'arrow-up-drop-circle-outline':
             self.controller.tb_movement()
+
+    def set_screen_is_active(self, state):
+        self.controller.set_screen_is_active(state)

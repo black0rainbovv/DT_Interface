@@ -28,3 +28,6 @@ class MainScreenController:
 
     def run_last_prog(self):
         return self.model.run_last_prog()
+
+    def set_screen_is_active(self, state):
+        self.model.screen_is_active = state

@@ -51,6 +51,7 @@
 
             MainCard:
                 on_release: root.switch_screen("login screen")
+                on_release: root.set_screen_is_active(False)
 
                 FitImage:
                     source: "assets/images/account_1.png"
@@ -74,6 +75,7 @@
 
             MainCard:
                 on_release: root.switch_screen("setting screen")
+                on_release: root.set_screen_is_active(False)
 
                 FitImage:
                     source: "assets/images/settings.png"
