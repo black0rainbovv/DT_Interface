@@ -16,16 +16,12 @@ class AboutDeviceScreenView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         '''
-
-        # if self.controller.firmware_version[0] == '':
-        #     self.controller.get_device_survey()
-        # else:   
-        temp_verison, motor_version, optic_version, display_version = self.model.firmware_version
+        
+        temp_verison, motor_version, optic_version = self.model.firmware_version
 
         self.ids.fver_temperature.text = temp_verison
         self.ids.fver_motor.text = motor_version
         self.ids.fver_optical.text = optic_version
-        self.ids.fver_display.text = display_version
 
         self.ids.serial_number.text = self.model.serial_number
         self.ids.tb_number.text = self.model.tb_number

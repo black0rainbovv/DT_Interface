@@ -16,4 +16,4 @@ class AboudDeviceController:
         return self.view
         
     def get_device_survey(self):
-        self.model.start_device_survey()
+        self.model.device_survey()

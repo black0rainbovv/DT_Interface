@@ -17,6 +17,13 @@ class Device():
         self._display_controller = '5'
         self._motor_cmd = (b'hopen\r', b'hclose\r')
         self._motor_state = 0
+        self.firmware_version = []
+        self.tb_number = ''
+        self.tb_type = ''
+        self.runtime = ''
+        self.serial_number = ''
+
+        self._get_device_info()
 
     def can_message(self, message, controller):
         controller = str(f'${controller}\r')
@@ -34,7 +41,19 @@ class Device():
         data = self._can.read_until(expected='\x00')
         self._can.write(b'$$\r')
         self._can.close()
-        return data.decode('UTF-8')
+
+        try:
+            return data.decode('UTF-8')
+        except UnicodeDecodeError:
+            print('utf-8 codec cant decode')
+            return ''
+
+    def _get_device_info(self):
+        self.serial_number = self.get_serial_number()
+        self.runtime = self.get_runtime()
+        self.tb_number = self.get_tb_number()
+        self.tb_type = self.get_tb_type()
+        self.firmware_version = self.get_firmware_verison()
 
     def get_serial_number(self):
         serial_number = self.can_message('FSN', self._optical_controller)
@@ -114,8 +133,7 @@ class Device():
         temp_verison = self.can_message('FVER', self._temperature_controller)
         motor_version = self.can_message('FVER', self._motor_controller)
         optical_version = self.can_message('FVER', self._optical_controller)
-        display_version = self.can_message('FVER', self._display_controller)
-        return [temp_verison, motor_version, optical_version, display_version]
+        return [temp_verison, motor_version, optical_version]
 
     def get_device_date(self):
         data = self.can_message('DATE', self._optical_controller)
