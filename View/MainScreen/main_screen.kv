@@ -18,29 +18,25 @@
                 ]  
 
         MDBoxLayout:
-            pos_hint: {"center_x": 0.5,"center_y": 0.45}
             size_hint: 1, 0.2
-            # md_bg_color: 1, 1, 1, 0.5
             height: 10
-            padding: [30, 0, 0, 0]
+            padding: [30, 100, 0, 0]
 
             MDLabel:
                 id: device_status
-                pos_hint: {'left': 1}
+                pos_hint: {"left": 1}
                 text: "Состояние прибора:"
-                color: "white"
-                font_size: "24sp"
-                font_name: "assets/fonts/futuralightc.otf"
-                font_style: "H6"
+                color: "#F0FFFF"
+                font_size: "36sp"
+                font_name: "assets/fonts/FuturaMediumC.otf"
 
             MDLabel:
                 id: temperature
-                pos_hint: {'right': 1}
+                pos_hint: {"right": 1}
                 text: "Температура термоблока:"
-                color: "white"
-                font_size: "24sp"
-                font_name: "assets/fonts/futuralightc.otf"
-                font_style: "H6"
+                color: "#F0FFFF"
+                font_size: "34sp"
+                font_name: "assets/fonts/FuturaMediumC.otf"
 
         MDBoxLayout:
             id: box

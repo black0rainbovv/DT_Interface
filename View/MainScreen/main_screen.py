@@ -18,10 +18,10 @@ class MainScreenView(BaseScreenView):
         according to these changes.
         '''
         status = self.model.device_status
-        self.ids.temperature.text = f'Температура термоблока: {self.model.tb_temperature[0]}°C'
+        self.ids.temperature.text = f'Температура термоблока:\n              {self.model.tb_temperature[0]}°C'
 
         if int(status) == 5:
-            self.ids.device_status.text = 'Состояние прибора: готов'
+            self.ids.device_status.text = 'Состояние прибора:\n              готов'
         else:
             self.ids.device_status.text = 'Состояние прибора: прогрев'
         
@@ -35,6 +35,7 @@ class MainScreenView(BaseScreenView):
 
     def callback(self, instance):
         if instance.icon == 'power':
+            self.set_screen_is_active(False)
             quit()
         if instance.icon == 'arrow-up-drop-circle-outline':
             self.controller.tb_movement()
