@@ -128,7 +128,8 @@ class Device():
     def get_runtime(self):
         data = self.can_message('GRCNT', self._temperature_controller)
         data = data[4:].split(' ')
-        return round(((int(data[0]) + int(data[1]) * 65536) / 12) / 60)
+        if len(data) > 1:
+            return round(((int(data[0]) + int(data[1]) * 65536) / 12) / 60)
 
     def get_channel_count(self):
         data = self.can_message('FACS', self._optical_controller)

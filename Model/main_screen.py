@@ -18,8 +18,7 @@ class MainScreenModel(BaseScreenModel):
         self._device = Device()
 
     def get_device_serial_number(self):
-        self.serial_number = self._device.get_serial_number()
-        return self.serial_number
+        return self._device.get_serial_number()        
 
     def start_device_status_thread(self):
         Thread(target=self.device_info).start()

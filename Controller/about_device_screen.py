@@ -14,3 +14,6 @@ class AboudDeviceController:
 
     def get_view(self) -> AboutDeviceScreenView:
         return self.view
+        
+    def get_device_survey(self):
+        self.model.start_device_survey()
