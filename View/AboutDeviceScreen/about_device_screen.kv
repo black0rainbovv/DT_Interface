@@ -20,70 +20,28 @@
             orientation: "vertical"
             pos_hint: {"center_x": 0.5,"center_y": 0.5}
             padding: [80, 0, 0, 0]
-            spacing: 12
+            spacing: 50
 
-            MDBoxLayout:
-                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            AboutDeviceLabel:
+                id: serial_number
             
-                AboutDeviceLabel:
-                    text: "Серийный номер:"
-
-                AboutDeviceLabel:
-                    id: serial_number
-
-            MDBoxLayout:
-                pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            AboutDeviceLabel:
+                id: tb_type
             
-                AboutDeviceLabel:
-                    text: "Тип термоблока:"
+            AboutDeviceLabel:
+                id: tb_number
 
-                AboutDeviceLabel:
-                    id: tb_type
+            AboutDeviceLabel:
+                id: fver_temperature
 
-            MDBoxLayout:
-                pos_hint: {"center_x": 0.5,"center_y": 0.5}
-            
-                AboutDeviceLabel:
-                    text: "Номер термоблока:"
+            AboutDeviceLabel:
+                id: fver_motor
 
-                AboutDeviceLabel:
-                    id: tb_number
+            AboutDeviceLabel:
+                id: fver_optical
 
-            MDBoxLayout:
-                pos_hint: {"center_x": 0.5,"center_y": 0.5}
-            
-                AboutDeviceLabel:
-                    text: "Температурная прошивка:"
-
-                AboutDeviceLabel:
-                    id: fver_temperature
-
-            MDBoxLayout:
-                pos_hint: {"center_x": 0.5,"center_y": 0.5}
-            
-                AboutDeviceLabel:
-                    text: "Моторная прошивка:"
-
-                AboutDeviceLabel:
-                    id: fver_motor
-
-            MDBoxLayout:
-                pos_hint: {"center_x": 0.5,"center_y": 0.5}
-            
-                AboutDeviceLabel:
-                    text: "Оптическая прошивка:"
-
-                AboutDeviceLabel:
-                    id: fver_optical
-
-            MDBoxLayout:
-                pos_hint: {"center_x": 0.5,"center_y": 0.5}
-            
-                AboutDeviceLabel:
-                    text: "Время наработки:"
-
-                AboutDeviceLabel:
-                    id: runtime
+            AboutDeviceLabel:
+                id: runtime                    
 
         MDBoxLayout:
             size_hint_y: 0.15

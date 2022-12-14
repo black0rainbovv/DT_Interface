@@ -18,8 +18,8 @@
 
         MDBoxLayout:
             orientation: "vertical"
-            pos_hint: {"center_x": 0.5,"center_y": 0.5}
-            padding: [80, 0, 0, 0]
+            pos_hint: {"center_x": 0.5,"center_y": 0.55}
+            padding: [120, 0, 0, 20]
             
             SettingCard:
                 on_release: root.switch_screen("about device screen")
@@ -34,6 +34,7 @@
                     text: "О приборе"
 
         MDBoxLayout:
+            padding: [20, 0, 0, 0]
             size_hint_y: 0.15
 
             MDLabel:

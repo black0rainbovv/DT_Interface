@@ -10,3 +10,4 @@ class AboutDeviceLabel(MDLabel):
         self.font_size = "24sp"
         self.font_name = "assets/fonts/futuralightc.otf"
         self.font_style = "H6"
+        self.pos_hint = {"center_x": 0.5,"center_y": 0.5}
