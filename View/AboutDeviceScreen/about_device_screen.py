@@ -37,18 +37,19 @@ class AboutDeviceScreenView(BaseScreenView):
         Event called when the screen is displayed: the entering animation is
         complete.
         """ 
-        self.popup = Popup(title='Загрузка', 
-                           content=Label(text='Пожалуйста, подождите.',
-                                         color = "white",
-                                         font_size = "28sp",
-                                         font_name = "assets/fonts/futuralightc.otf"),
-                           auto_dismiss=False,
-                           pos_hint = {'center_x': 0.5,'center_y': 0.5},
-                           size_hint = (0.4, 0.3),
-                           background = 'assets/images/bg_3.png',
-                           title_color = 'white',
-                           title_size = '36sp',
-                           title_font = 'assets/fonts/futuralightc.otf',)
-        self.popup.open()
+        if self.ids.serial_number.text == '':
+            self.popup = Popup(title='Загрузка', 
+                            content=Label(text='Пожалуйста, подождите.',
+                                            color = "white",
+                                            font_size = "28sp",
+                                            font_name = "assets/fonts/futuralightc.otf"),
+                            auto_dismiss=False,
+                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
+                            size_hint = (0.4, 0.3),
+                            background = 'assets/images/bg_3.png',
+                            title_color = 'white',
+                            title_size = '36sp',
+                            title_font = 'assets/fonts/futuralightc.otf',)
+            self.popup.open()
 
-        self.controller.get_device_survey()
+            self.controller.get_device_survey()

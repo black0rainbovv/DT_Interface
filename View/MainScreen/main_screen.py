@@ -23,7 +23,7 @@ class MainScreenView(BaseScreenView):
         if int(status) == 5:
             self.ids.device_status.text = 'Состояние прибора:\n              готов'
         else:
-            self.ids.device_status.text = 'Состояние прибора: прогрев'
+            self.ids.device_status.text = 'Состояние прибора:\n              прогрев'
         
     def on_enter(self, *args):
         """
@@ -35,7 +35,6 @@ class MainScreenView(BaseScreenView):
 
     def callback(self, instance):
         if instance.icon == 'power':
-            self.set_screen_is_active(False)
             quit()
         if instance.icon == 'arrow-up-drop-circle-outline':
             self.controller.tb_movement()
