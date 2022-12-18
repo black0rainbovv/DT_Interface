@@ -1,6 +1,6 @@
 #:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
 
-<LoginScreenView>
+<RegistrationScreenView>
     hero_to: hero_to
 
     MDIconButton:
@@ -16,7 +16,7 @@
         x: field_login.x
         y: root.height - root.SHIFT_Y
         opacity: root.OPACITY
-        text: "Вход"
+        text: "Регистрация"
 
     FillField:
         id: field_login
@@ -61,7 +61,7 @@
 
     MDFillRoundFlatButton:
         id: reg_button
-        on_release: root.switch_screen('registration screen')
+        on_release: root.open_dialog_window()
         text: "Регистрация"
         opacity: root.OPACITY
         size_hint_x: None
