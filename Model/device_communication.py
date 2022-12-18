@@ -113,8 +113,9 @@ class Device():
 
     def get_firmware_verison(self):
         temp_verison = self.can_message('FVER', self._temperature_controller)
-        motor_version = self.can_message('FVER', self._motor_controller)
+        # motor_version = self.can_message('FVER', self._motor_controller)
         optical_version = self.can_message('FVER', self._optical_controller)
+        motor_version = '    motor'
         return [temp_verison[4:], motor_version[4:], optical_version[4:]]
 
     def get_device_date(self):

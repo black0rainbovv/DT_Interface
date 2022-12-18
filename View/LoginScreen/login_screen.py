@@ -14,16 +14,7 @@ class LoginScreenView(BaseScreenView):
     FIELD_HEIGHT = NumericProperty(dp(52))
     PADDING = NumericProperty(dp(24))
 
-    def on_enter(self, *args):
-    #    """
-    #    Event called when the screen is displayed: the entering animation is
-    #    complete.
-    #    """
-#
-    #    animation = Animation(SHIFT_Y=dp(140), d=1, t="in_out_quart")
-    #    animation.bind(on_complete=self.animation_bg_zoom)
-    #    animation.start(self)
-        
+    def on_enter(self, *args):        
         if not self.app.enable_animation:
             animation = Animation(SHIFT_Y=dp(140), d=1, t="in_out_quart")
             animation.start(self)
@@ -31,15 +22,10 @@ class LoginScreenView(BaseScreenView):
             super().on_enter()
 
         Animation(OPACITY=1, d=3).start(self)
-#
-    #def animation_bg_zoom(self, *args):
-    #    Animation(height=self.ids.bg.height + self.SHIFT_Y, d=2, t="in_out_quart").start(
-    #        self.ids.bg
-    #    )
 
     def back_to_first_screen(self):
-        #self.manager_screens.current_hero = self.ids.hero.tag
-        #self.manager_screens.current = "main screen"
+        self.manager_screens.current_hero = self.ids.hero.tag
+        self.manager_screens.current = "main screen"
         self.switch_screen("main screen")
 
     def model_is_changed(self) -> None:

@@ -3,6 +3,15 @@
 <LoginScreenView>
     hero_to: hero_to
 
+    MDIconButton:
+        id: back_btn
+        icon: "arrow-left-circle-outline"
+        icon_size: "64sp"
+        pos_hint: {"top": 1}
+        theme_icon_color: "Custom"
+        icon_color: "#006492"
+        on_release: root.switch_screen("main screen")
+
     CommonLabel:
         x: field_login.x
         y: root.height - root.SHIFT_Y
@@ -50,32 +59,22 @@
         ripple_color: app.theme_cls.primary_color[:-1] + [.4]
         y: root.SHIFT_Y
 
-    # MDIconButton:
-    #     id: back_btn
-    #     icon: "arrow-left-circle-outline"
-    #     icon_size: "64sp"
-    #     pos_hint: {"top": 1}
-    #     theme_icon_color: "Custom"
-    #     icon_color: "#006492"
-    #     on_release:root.back_to_first_screen()
+    MDFillRoundFlatButton:
+        id: reg_button
+        text: "Регистрация"
+        opacity: root.OPACITY
+        size_hint_x: None
+        -width: field_password.width
+        pos_hint: {"center_x": .5 }
+        font_size: "24sp"
+        font_name: "assets/fonts/futuralightc.otf"
+        md_bg_color: .8, .8, .8, 1
+        text_color: app.theme_cls.primary_color
+        ripple_color: app.theme_cls.primary_color[:-1] + [.4]
+        y: root.SHIFT_Y / 2
 
     MDHeroTo:
         id:hero_to
         size_hint: None, None
         size: "56dp", "56dp"
         pos: root.width - (self.width + dp(12)), root.height - (self.height + dp(12))
-
-    MDBoxLayout:
-        pos_hint: {'center_x': .5, 'center_y': .04}
-        size_hint_y: .1
-            
-        MDRaisedButton:
-            size_hint_x: .3
-            pos_hint: {'center_x': .1, 'center_y': .5}
-            text: 'Назад'
-            md_bg_color: '#001b31'
-            line_color: (0.2, 0.2, 0.2, 0.8)
-            font_size: '24sp'
-            font_name: 'assets/fonts/futuralightc.otf'
-            font_style: 'H5'
-            on_release: root.switch_screen('main screen')
