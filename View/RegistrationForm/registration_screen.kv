@@ -10,7 +10,7 @@
         pos_hint: {"top": 1}
         theme_icon_color: "Custom"
         icon_color: "#006492"
-        on_release: root.switch_screen("main screen")
+        on_release: root.switch_screen("login screen")
 
     CommonLabel:
         x: field_login.x
@@ -45,28 +45,27 @@
             root.center[0] - root.FIELD_WIDTH / 2, \
             root.center[1] - root.SHIFT_Y / 4
 
+    FillField:
+        id: field_password
+        opacity: root.OPACITY
+        hint_text: "Повторите пароль"
+        icon_left: "lock"
+        hint_text_color_normal: 'white'
+        text_color_normal: 'white'
+        helper_text_color_normal: 'white'
+        line_color_normal: 'white'
+        password: True
+        pos:
+            root.center[0] - root.FIELD_WIDTH / 2, \
+            root.SHIFT_Y
+
     MDFillRoundFlatButton:
         id: sign_in_button
-        text: "Войти"
+        text: "Зарегистрироваться"
         opacity: root.OPACITY
         size_hint_x: None
         -width: field_password.width
         pos_hint: {"center_x": .5}
-        font_size: "24sp"
-        font_name: "assets/fonts/futuralightc.otf"
-        md_bg_color: .8, .8, .8, 1
-        text_color: app.theme_cls.primary_color
-        ripple_color: app.theme_cls.primary_color[:-1] + [.4]
-        y: root.SHIFT_Y
-
-    MDFillRoundFlatButton:
-        id: reg_button
-        on_release: root.open_dialog_window()
-        text: "Регистрация"
-        opacity: root.OPACITY
-        size_hint_x: None
-        -width: field_password.width
-        pos_hint: {"center_x": .5 }
         font_size: "24sp"
         font_name: "assets/fonts/futuralightc.otf"
         md_bg_color: .8, .8, .8, 1
