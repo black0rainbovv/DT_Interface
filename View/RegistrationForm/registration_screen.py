@@ -1,12 +1,20 @@
 from kivy.animation import Animation
 from kivy.metrics import dp
 from kivy.properties import NumericProperty
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 
 from View.base_screen import BaseScreenView
 from View.LoginScreen.components import FillField, CommonLabel
 
 class RegistrationScreenView(BaseScreenView):
     """Implements the login start screen in the user application."""
+
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self._user_name = ''
+        self._user_password = ''
+        self._user_second_password = ''
 
     OPACITY = NumericProperty(0)
     SHIFT_Y = NumericProperty(dp(0))
@@ -34,3 +42,22 @@ class RegistrationScreenView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         """
+        self.popup = Popup(title='Информация', 
+                            content=Label(text='Успешно.',
+                                            color = "white",
+                                            font_size = "22sp",
+                                            font_name = "assets/fonts/futuralightc.otf"),
+                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
+                            size_hint = (0.4, 0.3),
+                            background = 'assets/images/bg_3.png',
+                            title_color = 'white',
+                            title_size = '28sp',
+                            title_font = 'assets/fonts/futuralightc.otf',)
+        self.popup.open()
+
+    def registration_user(self):
+        self._user_name = self.ids.field_login.text
+        self._user_password = self.ids.field_password.text
+        self._user_second_password = self.ids.field_second_password.text
+
+        self.controller.registration_user(self._user_name, self._user_password, self._user_second_password)

@@ -46,7 +46,7 @@
             root.center[1] - root.SHIFT_Y / 4
 
     FillField:
-        id: field_password
+        id: field_second_password
         opacity: root.OPACITY
         hint_text: "Повторите пароль"
         icon_left: "lock"
@@ -61,6 +61,7 @@
 
     MDFillRoundFlatButton:
         id: sign_in_button
+        on_release: root.registration_user()
         text: "Зарегистрироваться"
         opacity: root.OPACITY
         size_hint_x: None

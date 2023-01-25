@@ -32,6 +32,7 @@ class Device():
         self._can.open()
         self._can.write(bytes(controller, 'UTF-8'))
         self._can.write(bytes(message, 'UTF-8'))
+        sleep(0.05)
         data = self._can.read_until(expected='\x00')
         self._can.write(b'$$\r')
         self._can.close()
@@ -113,9 +114,9 @@ class Device():
 
     def get_firmware_verison(self):
         temp_verison = self.can_message('FVER', self._temperature_controller)
-        # motor_version = self.can_message('FVER', self._motor_controller)
+        motor_version = self.can_message('FVER', self._motor_controller)
         optical_version = self.can_message('FVER', self._optical_controller)
-        motor_version = '    motor'
+        # motor_version = '    motor'
         return [temp_verison[4:], motor_version[4:], optical_version[4:]]
 
     def get_device_date(self):
