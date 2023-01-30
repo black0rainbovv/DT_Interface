@@ -1,6 +1,6 @@
 #:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
 
-<MainScreenView>
+<GettingStartedView>
         
     MDBoxLayout:
         orientation: 'vertical'
@@ -18,27 +18,6 @@
                 ]  
 
         MDBoxLayout:
-            size_hint: 1, 0.2
-            height: 10
-            padding: [30, 100, 0, 0]
-
-            MDLabel:
-                id: device_status
-                pos_hint: {'left': 1}
-                text: 'Состояние прибора:'
-                color: '#F0FFFF'
-                font_size: '36sp'
-                font_name: 'assets/fonts/FuturaMediumC.otf'
-
-            MDLabel:
-                id: temperature
-                pos_hint: {'right': 1}
-                text: 'Температура термоблока:'
-                color: '#F0FFFF'
-                font_size: '34sp'
-                font_name: 'assets/fonts/FuturaMediumC.otf'
-
-        MDBoxLayout:
             id: box
             spacing: '32dp'
             padding: '48dp'
@@ -46,8 +25,6 @@
             size_hint_y:1
 
             MainCard:
-                on_release: root.switch_screen('login screen')
-                on_release: root.set_screen_is_active(False)
 
                 FitImage:
                     source: 'assets/images/account_1.png'
@@ -59,8 +36,6 @@
                     text: 'Войти'
 
             MainCard:
-                on_release: root.switch_screen('getting started screen')
-                on_release: root.set_screen_is_active(False)
 
                 FitImage:
                     source: 'assets/images/amp_curve_2.png'

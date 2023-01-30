@@ -12,6 +12,8 @@ from Model.about_device_screen import AboutDeviceScreenModel
 from Controller.about_device_screen import AboudDeviceController
 from Model.registration_screen import RegistrationScreenModel
 from Controller.registration_screen import RegistrationScreenController
+from Model.getting_started_screen import GettingStartedModel
+from Controller.gettin_started_screen import GettingStartedController
 
 screens = {
     "main screen": {
@@ -37,5 +39,10 @@ screens = {
     "registration screen": {
         "model": RegistrationScreenModel,
         "controller": RegistrationScreenController
+    },
+
+    "getting started screen": {
+        "model": GettingStartedModel,
+        "controller": GettingStartedController
     }
 }

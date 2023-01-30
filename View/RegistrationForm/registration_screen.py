@@ -48,9 +48,9 @@ class RegistrationScreenView(BaseScreenView):
         self._user_password = self.ids.field_password.text
         self._user_second_password = self.ids.field_second_password.text
 
-        self.open_model_window(self.controller.registration_user(self._user_name, self._user_password, self._user_second_password))
+        self.open_modal_window(self.controller.registration_user(self._user_name, self._user_password, self._user_second_password))
 
-    def open_model_window(self, status: bool):
+    def open_modal_window(self, status: bool):
         if status:
             self.popup = Popup(title='Информация', 
                             content=Label(text='Успешно.',
