@@ -1,6 +1,5 @@
 from View.GettingStartedScreen.getting_started_screen import GettingStartedView
 
-import serial
 
 class GettingStartedController:
     """
@@ -20,5 +19,6 @@ class GettingStartedController:
     def tb_movement(self):
         self.model.tb_movement()
 
-    def run_last(self):
-        return self.model.last_run() == 0
+    def last_run(self):
+        print(self.model.last_run())
+        return self.model.last_run() == '0'

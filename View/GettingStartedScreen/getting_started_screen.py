@@ -1,6 +1,9 @@
 from View.base_screen import BaseScreenView
 from View.MainScreen.components import MainLabel, MainCard
 
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+
 
 class GettingStartedView(BaseScreenView):
     '''Implements the login start screen in the user application.'''
@@ -33,7 +36,7 @@ class GettingStartedView(BaseScreenView):
 
     def last_run(self):  # sourcery skip: remove-pass-body
         if self.controller.last_run():
-            pass                           #swicth screen на экран выполнения протокола 
+            print('run')                           #swicth screen на экран выполнения протокола 
         else:
             self.popup = Popup(title='Внимание', 
                             content=Label(text='Непредвиденная ошибка.',

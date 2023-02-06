@@ -37,7 +37,10 @@ class Device():
         data = self._can.read_until(expected='\x00')
         self._can.write(b'$$\r')
         self._can.close()
-        return data.decode('UTF-8')
+        try:
+            return data.decode('UTF-8')
+        except Exception:
+            return data
 
     def get_serial_number(self):
         serial_number = self.can_message('FSN', self._optical_controller)
