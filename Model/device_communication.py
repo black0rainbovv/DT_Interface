@@ -18,6 +18,7 @@ class Device():
         self._display_controller = '5'
         self._motor_cmd = (b'hopen\r', b'hclose\r')
         self._motor_state = 0
+        self._serial_number = None
 
     def can_message(self, message, controller):
         controller = str(f'${controller}\r')

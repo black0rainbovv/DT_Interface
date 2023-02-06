@@ -9,6 +9,7 @@ class MainScreenView(BaseScreenView):
         super().__init__(**kw)
         self.model.add_observer(self)
         self.ids.maintopbar.title = self.controller.get_serial_number()
+        self.app.serial_number = self.ids.maintopbar.title
 
     def model_is_changed(self) -> None:
 

@@ -16,3 +16,9 @@ class GettingStartedController:
 
     def get_view(self) -> GettingStartedView:
         return self.view
+
+    def tb_movement(self):
+        self.model.tb_movement()
+
+    def run_last(self):
+        return self.model.last_run() == 0

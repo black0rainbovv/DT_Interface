@@ -25,38 +25,37 @@
             size_hint_y:1
 
             MainCard:
+                on_release: root.last_run()
 
                 FitImage:
-                    source: 'assets/images/account_1.png'
+                    source: 'assets/images/amp_curve.png'
                     radius: 24, 24, 0, 0
                     size_hint_y: 8
                     pos_hint: {'top': 1}
 
                 MainLabel:
-                    text: 'Войти'
+                    text: 'Последний запуск'
 
             MainCard:
 
                 FitImage:
-                    source: 'assets/images/amp_curve_2.png'
+                    source: 'assets/images/amp_curve_3.png'
                     radius: 24, 24, 0, 0
                     size_hint_y: 8
                     pos_hint: {'top': 1}
 
                 MainLabel:
-                    text: 'Начало работы'
+                    text: 'Новый протокол'
 
             MainCard:
-                on_release: root.switch_screen('setting screen')
-                on_release: root.set_screen_is_active(False)
 
                 FitImage:
-                    source: 'assets/images/settings.png'
+                    source: 'assets/images/book.png'
                     radius: 24, 24, 0, 0
                     size_hint_y: 8
                     pos_hint: {'top': 1}
 
                 MainLabel:
-                    text: 'Настройки'
+                    text: 'История'
 
         

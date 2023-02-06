@@ -25,6 +25,7 @@ from View.screens import screens
 
 class DtUiKivy(MDApp):
     user_login = None
+    serial_number = None
     enable_animation = False
 
     def __init__(self, **kwargs):

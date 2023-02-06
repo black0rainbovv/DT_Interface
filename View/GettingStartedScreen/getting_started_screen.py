@@ -8,6 +8,8 @@ class GettingStartedView(BaseScreenView):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.model.add_observer(self)
+        self.ids.maintopbar.title = self.app.serial_number
+        self.popup = Popup()
 
     def model_is_changed(self) -> None:
 
@@ -22,3 +24,25 @@ class GettingStartedView(BaseScreenView):
         Event called when the screen is displayed: the entering animation is
         complete.
         """ 
+
+    def callback(self, instance):
+        if instance.icon == 'power':
+            quit()
+        if instance.icon == 'arrow-up-drop-circle-outline':
+            self.controller.tb_movement()
+
+    def last_run(self):  # sourcery skip: remove-pass-body
+        if self.controller.last_run():
+            pass                           #swicth screen на экран выполнения протокола 
+        else:
+            self.popup = Popup(title='Внимание', 
+                            content=Label(text='Непредвиденная ошибка.',
+                                            color = "white",
+                                            font_size = "22sp",
+                                            font_name = "assets/fonts/futuralightc.otf"),
+                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
+                            size_hint = (0.4, 0.3),
+                            background = 'assets/images/bg_3.png',
+                            title_color = 'white',
+                            title_size = '28sp',
+                            title_font = 'assets/fonts/futuralightc.otf')
