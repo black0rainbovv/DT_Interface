@@ -34,9 +34,9 @@ class GettingStartedView(BaseScreenView):
         if instance.icon == 'arrow-up-drop-circle-outline':
             self.controller.tb_movement()
 
-    def last_run(self):  # sourcery skip: remove-pass-body
+    def last_run(self):
         if self.controller.last_run():
-            print('run')                           #swicth screen на экран выполнения протокола 
+            self.switch_screen('run screen')
         else:
             self.popup = Popup(title='Внимание', 
                             content=Label(text='Непредвиденная ошибка.',
