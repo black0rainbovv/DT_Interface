@@ -10,12 +10,6 @@ from View.LoginScreen.components import FillField, CommonLabel
 class RegistrationScreenView(BaseScreenView):
     """Implements the login start screen in the user application."""
 
-    def __init__(self, **kw):
-        super().__init__(**kw)
-        self._user_name = ''
-        self._user_password = ''
-        self._user_second_password = ''
-
     OPACITY = NumericProperty(0)
     SHIFT_Y = NumericProperty(dp(0))
     FIELD_WIDTH = NumericProperty(dp(320))
@@ -44,11 +38,11 @@ class RegistrationScreenView(BaseScreenView):
         """
 
     def register_user(self):
-        self._user_name = self.ids.field_login.text
-        self._user_password = self.ids.field_password.text
-        self._user_second_password = self.ids.field_second_password.text
+        user_name = self.ids.field_login.text
+        user_password = self.ids.field_password.text
+        user_second_password = self.ids.field_second_password.text
 
-        self.open_modal_window(self.controller.registration_user(self._user_name, self._user_password, self._user_second_password))
+        self.open_modal_window(self.controller.registration_user(user_name, user_password, user_second_password))
 
     def open_modal_window(self, status: bool):
         if status:
@@ -63,6 +57,7 @@ class RegistrationScreenView(BaseScreenView):
                             title_color = 'white',
                             title_size = '28sp',
                             title_font = 'assets/fonts/futuralightc.otf',)
+            self.switch_screen('main screen')
         else:
             self.popup = Popup(title='Внимание', 
                             content=Label(text='Ошибка',

@@ -15,3 +15,6 @@ class LoginScreenController:
 
     def get_view(self) -> LoginScreenView:
         return self.view
+
+    def login_user(self, user_name, user_password):
+        return self.model.login_user(str(user_name), str(user_password))

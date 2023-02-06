@@ -52,6 +52,7 @@ class BaseScreenView(ThemableBehavior, MDScreen, Observer):
         self.app = MDApp.get_running_app()
         # Adding a view class as observer.
         self.model.add_observer(self)
+        
 
     def on_enter(self, *args):
         """

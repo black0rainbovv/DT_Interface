@@ -28,6 +28,9 @@ share/python-wheels/
 .vscode/
 venv/
 *.ipynb
+*.bak
+*.dat
+*.dir
 MANIFEST
 
 # PyInstaller

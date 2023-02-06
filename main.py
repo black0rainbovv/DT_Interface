@@ -24,7 +24,7 @@ from kivymd.uix.screenmanager import MDScreenManager
 from View.screens import screens
 
 class DtUiKivy(MDApp):
-    user_name = 'Гость'
+    user_login = None
     enable_animation = False
 
     def __init__(self, **kwargs):

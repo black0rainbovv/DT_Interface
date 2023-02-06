@@ -17,6 +17,7 @@ class MainScreenView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         '''
+
         status = self.model.device_status
         self.ids.temperature.text = f'Температура термоблока:\n              {self.model.tb_temperature[0]}°C'
 
@@ -32,6 +33,11 @@ class MainScreenView(BaseScreenView):
         """ 
         self.set_screen_is_active(True)
         self.controller.get_device_status()
+            
+        if self.app.user_login is None:
+            self.ids.name_label.text = 'Пользователь: Гость'
+        else:
+            self.ids.name_label.text = f'Пользователь: {self.app.user_login}'
 
     def callback(self, instance):
         if instance.icon == 'power':

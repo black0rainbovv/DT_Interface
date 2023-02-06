@@ -20,7 +20,6 @@ class RegistrationScreenModel(BaseScreenModel):
         if self.is_user_exests(user_name) == False:
             self.add_user(user_name, user_password)
             return True
-            # self.notify_observers('registration screen')
 
     def is_user_exests(self, user_name):
         with self.data.open(self._file) as states:
