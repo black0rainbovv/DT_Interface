@@ -1,8 +1,5 @@
 from View.base_screen import BaseScreenView
-from View.MainScreen.components import MainLabel, MainCard
-
-from kivy.uix.popup import Popup
-from kivy.uix.label import Label
+from View.RunScreen.components import CircularProgressBar 
 
 
 class RunScreenView(BaseScreenView):
