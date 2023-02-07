@@ -1,8 +1,12 @@
 #:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
+#:import Label kivy.core.text.Label
+#:set _label Label(text="\\nI am a label\\ninjected in kivy\\nmarkup string :)\\nEnjoy! --={}=--")
+#:set _another_label Label(text="Loading...\\n{}%", font_size=10, color=(1,1,0.5,1), halign="center")
 
 <RunScreenView>
-        
+
     MDBoxLayout:
+        id: box
         orientation: 'vertical'
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         
@@ -15,6 +19,14 @@
                 ['help-circle', lambda x: root.callback(x), 'Помощь'],
                 ['arrow-up-drop-circle-outline', lambda x: root.callback(x), 'Открыть\Закрыть'],
                 ['power', lambda x: root.callback(x), 'Выключение']
-                ]  
+                ]
+                
+        MDFloatLayout:
+            id: layout
+
+            CircularProgressBar:
+                pos: 400, 100
+    
+
 
         
