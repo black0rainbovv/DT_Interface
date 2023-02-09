@@ -11,7 +11,7 @@ class RunScreenView(BaseScreenView):
         super().__init__(**kw)
         self.model.add_observer(self)
         self.ids.maintopbar.title = self.app.serial_number
-        self._progress_bar = self.ids.layout.children[0]
+        self.progress_bar = self.ids.progress_bar
 
     def model_is_changed(self) -> None:
 
@@ -26,21 +26,10 @@ class RunScreenView(BaseScreenView):
         Event called when the screen is displayed: the entering animation is
         complete.
         """ 
-        print(self.ids.layout.children[0].set_norm_value(1))
-        # Clock.schedule_interval(self.animate, 0.05)
+        Clock.schedule_interval(self.animate, 0.2)
 
     def animate(self, dt):
-        for bar in self._progress_bar:
-            if bar.value < bar.max:
-                bar.value += 1
-            else:
-                bar.value = bar.min
-
-        bar = self._progress_bar
-        if bar.value < bar.max:
-            bar.value_normalized += 0.01
+        if self.progress_bar.value < self.progress_bar.max:
+            self.progress_bar.value_normalized += 0.01
         else:
-            bar.value_normalized = 0
-
-    
-
+            self.progress_bar.value_normalized = 0

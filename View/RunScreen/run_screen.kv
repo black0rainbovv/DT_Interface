@@ -1,7 +1,11 @@
 #:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
-#:import Label kivy.core.text.Label
-#:set _label Label(text="\\nI am a label\\ninjected in kivy\\nmarkup string :)\\nEnjoy! --={}=--")
-#:set _another_label Label(text="Loading...\\n{}%", font_size=10, color=(1,1,0.5,1), halign="center")
+# import Label kivy.core.text.Label
+# set _label Label(text="\\nI am a label\\ninjected in kivy\\nmarkup string :)\\nEnjoy! --={}=--")
+# set _another_label Label(text="Loading...\\n{}%", font_size=10, color=(1,1,0.5,1), halign="center")
+
+<CustomLabel@MDLabel>
+    font_size: '24sp'
+    font_name: 'assets/fonts/FuturaMediumC.otf'
 
 <RunScreenView>
 
@@ -16,17 +20,82 @@
             md_bg_color:'#001b31'
             right_action_items: 
                 [
-                ['help-circle', lambda x: root.callback(x), 'Помощь'],
-                ['arrow-up-drop-circle-outline', lambda x: root.callback(x), 'Открыть\Закрыть'],
-                ['power', lambda x: root.callback(x), 'Выключение']
+                ['help-circle', lambda x: root.callback(x), 'Помощь']
                 ]
                 
         MDFloatLayout:
             id: layout
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                pos_hint: {'center_x': 0.17, 'center_y': 0.5}
+                size_hint_x: 0.35
+                
+                MDCard:
+                    orientation: 'vertical'
+                    md_bg_color: [0, 0, 0, 0.1]
+                    padding: 20
+                    spacing: 20
+
+                    MDCard:
+                        md_bg_color: [0, 0, 0, 0.1]
+                        line_color: [0.2, 0.2, 0.2, 0.8]
+                        size_hint: 1, 0.5
+                        padding: 20
+                        style: 'outlined'
+
+                        CustomLabel:
+                            id: device_status
+                            color: '#F0FFFF'
+                            text: 'Температура термоблока: '
+
+                    MDCard:
+                        md_bg_color: [0, 0, 0, 0.1]
+                        line_color: [0.2, 0.2, 0.2, 0.8]
+                        size_hint: 1, 0.5
+                        padding: 20
+                        style: 'outlined'
+
+                        CustomLabel:
+                            id: time_left
+                            color: '#F0FFFF'
+                            text: 'Циклы:'
+
+                    MDCard:
+                        md_bg_color: [0, 0, 0, 0.1]
+                        line_color: [0.2, 0.2, 0.2, 0.8]
+                        size_hint: 1, 0.5
+                        padding: 20
+                        style: 'outlined'
+
+                        CustomLabel:
+                            id: tb_temperature
+                            color: '#F0FFFF'
+                            text: 'Времени осталось:'
+
+                    MDCard:
+                        md_bg_color: [0, 0, 0, 0.1]
+                        line_color: [0.2, 0.2, 0.2, 0.8]
+                        size_hint: 1, 0.5
+                        padding: 20
+                        style: 'outlined'
+
+                        MDRaisedButton:
+                            md_bg_color: [0.27, 0.59, 0.78, 0.8]
+                            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                            size_hint: 1, 1
+                            color: '#F0FFFF'
+                            text: 'Остановить'
+                            font_size: '24sp'
+                            font_name: 'assets/fonts/FuturaMediumC.otf'
+                    
 
             CircularProgressBar:
-                pos: 400, 100
-    
-
-
+                id: progress_bar
+                pos: 305, 120
+                cap_style: "SqUArE"
+                progress_colour: [0.27, 0.59, 0.78, 1]
+                background_colour: [0.25, 0.4, 0.43, 1]
         
