@@ -20,13 +20,25 @@ class RunScreenView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         '''
+
+        self.ids.temperature.text = f'Температура термоблока: {self.model.tb_temperature[0]}°C'
+        self.ids.time_left.text = f'Времени осталось: {self.model.time_left}'
         
     def on_enter(self, *args):
         """
         Event called when the screen is displayed: the entering animation is
         complete.
         """ 
+        self.set_screen_is_active(True)
+        self.controller.start_device_survey()
+
         Clock.schedule_interval(self.animate, 0.2)
+
+    def set_screen_is_active(self, state):
+        self.controller.set_screen_is_active(state)
+
+    def stop_run(self):
+        self.controller.stop_run()
 
     def animate(self, dt):
         if self.progress_bar.value < self.progress_bar.max:

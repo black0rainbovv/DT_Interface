@@ -47,7 +47,7 @@
                         style: 'outlined'
 
                         CustomLabel:
-                            id: device_status
+                            id: temperature
                             color: '#F0FFFF'
                             text: 'Температура термоблока: '
 
@@ -59,7 +59,7 @@
                         style: 'outlined'
 
                         CustomLabel:
-                            id: time_left
+                            id: cycles
                             color: '#F0FFFF'
                             text: 'Циклы:'
 
@@ -71,7 +71,7 @@
                         style: 'outlined'
 
                         CustomLabel:
-                            id: tb_temperature
+                            id: time_left
                             color: '#F0FFFF'
                             text: 'Времени осталось:'
 
@@ -83,6 +83,7 @@
                         style: 'outlined'
 
                         MDRaisedButton:
+                            on_release: root.stop_run()
                             md_bg_color: [0.27, 0.59, 0.78, 0.8]
                             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                             size_hint: 1, 1

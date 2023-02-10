@@ -16,8 +16,17 @@ class RunScreenController:
     def get_view(self) -> RunScreenView:
         return self.view
 
+    def set_screen_is_active(self, state):
+        self.model.screen_is_active = state
+
+    def start_device_survey(self):
+        self.model.start_device_status_thread()
+
     def tb_movement(self):
         self.model.tb_movement()
 
     def last_run(self):
         return self.model.last_run() == '0'
+
+    def stop_run(self):
+        self.model.stop_run()

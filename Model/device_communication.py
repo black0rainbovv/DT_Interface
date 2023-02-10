@@ -108,8 +108,8 @@ class Device():
 
     def get_time_left(self):
         data = self.can_message('TI', self._temperature_controller)
-        data.split(' ')
-        return data[0][4:]
+        splitted = data.split(' ')
+        return splitted[0][4:]
 
     def get_time_passed(self):
         data = self.can_message('TI', self._temperature_controller)
@@ -143,6 +143,7 @@ class Device():
 
     def start_run(self):
         data = self.can_message('RN', self._temperature_controller)
+        sleep(2)
         return data[4:]
 
     def stop_run(self):
