@@ -19,6 +19,8 @@ class Device():
         self._motor_cmd = (b'hopen\r', b'hclose\r')
         self._motor_state = 0
         self._serial_number = None
+        self.all_time: str
+        self.passed_time: str
 
     def can_message(self, message, controller):
         controller = str(f'${controller}\r')
@@ -33,7 +35,7 @@ class Device():
         self._can.open()
         self._can.write(bytes(controller, 'UTF-8'))
         self._can.write(bytes(message, 'UTF-8'))
-        sleep(0.05)
+        sleep(0.02)
         data = self._can.read_until(expected='\x00')
         self._can.write(b'$$\r')
         self._can.close()
@@ -109,12 +111,14 @@ class Device():
     def get_time_left(self):
         data = self.can_message('TI', self._temperature_controller)
         splitted = data.split(' ')
-        return splitted[0][4:]
+        self.passed_time = splitted[1]
+        self.all_time = splitted[2][:3]
+        return splitted[0][4:]        
 
-    def get_time_passed(self):
-        data = self.can_message('TI', self._temperature_controller)
-        data.split(' ')
-        return data[1]
+    def get_cycles_passed(self):
+        data = self.can_message('XGS', self._temperature_controller)
+        splitted = data.split(' ')
+        return splitted[2]
 
     def get_firmware_verison(self):
         temp_verison = self.can_message('FVER', self._temperature_controller)

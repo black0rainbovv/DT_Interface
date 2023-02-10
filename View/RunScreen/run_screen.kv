@@ -1,7 +1,7 @@
 #:import STANDARD_INCREMENT kivymd.material_resources.STANDARD_INCREMENT
-# import Label kivy.core.text.Label
-# set _label Label(text="\\nI am a label\\ninjected in kivy\\nmarkup string :)\\nEnjoy! --={}=--")
-# set _another_label Label(text="Loading...\\n{}%", font_size=10, color=(1,1,0.5,1), halign="center")
+#:import Label kivy.core.text.Label
+#:set _label Label(text="Выполнено\n{}%", font_size=26, color=(0.94, 1, 1, 1), halign="center", font_name="assets/fonts/FuturaMediumC.otf")
+
 
 <CustomLabel@MDLabel>
     font_size: '24sp'
@@ -97,6 +97,7 @@
                 id: progress_bar
                 pos: 305, 120
                 cap_style: "SqUArE"
-                progress_colour: [0.27, 0.59, 0.78, 1]
+                progress_colour: [0.11, 0.56, 1, 1]
                 background_colour: [0.25, 0.4, 0.43, 1]
+                label: _label
         

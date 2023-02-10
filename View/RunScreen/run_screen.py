@@ -2,6 +2,8 @@ from View.base_screen import BaseScreenView
 from View.RunScreen.components import CircularProgressBar
 
 from kivy.clock import Clock
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 
 
 class RunScreenView(BaseScreenView):
@@ -11,7 +13,11 @@ class RunScreenView(BaseScreenView):
         super().__init__(**kw)
         self.model.add_observer(self)
         self.ids.maintopbar.title = self.app.serial_number
-        self.progress_bar = self.ids.progress_bar
+        self._progress_bar = self.ids.progress_bar
+        self._all_time = 100
+        self._passed_time = 0
+        self._progress_bar.max = self._all_time
+        self._progress_bar.value = self._passed_time
 
     def model_is_changed(self) -> None:
 
@@ -20,8 +26,11 @@ class RunScreenView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         '''
-
+        self._all_time = int(self.model.all_time)
+        self._passed_time = int(self.model.passed_time)
+        self._progress_bar.max = self._all_time
         self.ids.temperature.text = f'Температура термоблока: {self.model.tb_temperature[0]}°C'
+        self.ids.cycles.text = f'Циклов прошло: {self.model.cycles}'
         self.ids.time_left.text = f'Времени осталось: {self.model.time_left}'
         
     def on_enter(self, *args):
@@ -41,7 +50,21 @@ class RunScreenView(BaseScreenView):
         self.controller.stop_run()
 
     def animate(self, dt):
-        if self.progress_bar.value < self.progress_bar.max:
-            self.progress_bar.value_normalized += 0.01
+        if self._progress_bar.value < self._progress_bar.max:
+            self._progress_bar.value = self._passed_time
+
         else:
-            self.progress_bar.value_normalized = 0
+            popup = Popup(title='Информация', 
+                            content=Label(text='Программа закончила свое выполнение.\nЧтобы посмотреть результаты запустите DTmaster\nи прочитайте последний запуск в приборе.',
+                                            color = '#F0FFFF',
+                                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
+                                            font_size = '24sp',
+                                            font_name = 'assets/fonts/futuralightc.otf'),
+                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
+                            size_hint = (0.7, 0.4),
+                            background = 'assets/images/bg_3.png',
+                            title_color = 'white',
+                            title_size = '28sp',
+                            title_font = 'assets/fonts/futuralightc.otf')
+
+            popup.open()

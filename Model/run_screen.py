@@ -19,6 +19,8 @@ class RunScreenModel(BaseScreenModel):
         self.tb_temperature = []
         self.cycles: str
         self.time_left: int
+        self.all_time: str
+        self.passed_time: str
         self._screen_is_active = False
 
     @property
@@ -36,6 +38,8 @@ class RunScreenModel(BaseScreenModel):
         return self._device.start_run()
 
     def stop_run(self):
+        self._screen_is_active = False
+        sleep(2)
         self._device.stop_run()
 
     def convert_to_preferred_format(self, sec): 
@@ -52,7 +56,10 @@ class RunScreenModel(BaseScreenModel):
         try:
             while self._screen_is_active:
                 self.tb_temperature = self._device.get_tb_temperature()
+                self.cycles = self._device.get_cycles_passed()
                 self.time_left = self._device.get_time_left()
+                self.all_time = self._device.all_time
+                self.passed_time = self._device.passed_time
                 self.time_left = self.convert_to_preferred_format(int(self.time_left))
                 self.notify_observers('run screen')
         except Exception:
