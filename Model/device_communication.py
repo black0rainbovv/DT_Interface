@@ -28,8 +28,8 @@ class Device():
         try:
             return self._message_to_device(controller, message)
         except SerialException:
-            sleep(0.5)
-            return self._message_to_device(controller, message)
+            print('Could not open port')
+            return ''
 
     def _message_to_device(self, controller, message):
         self._can.open()

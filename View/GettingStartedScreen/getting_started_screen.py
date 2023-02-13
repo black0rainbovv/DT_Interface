@@ -33,6 +33,8 @@ class GettingStartedView(BaseScreenView):
             quit()
         if instance.icon == 'arrow-up-drop-circle-outline':
             self.controller.tb_movement()
+        if instance.icon == 'chevron-left-circle-outline':
+            self.switch_screen('main screen')
 
     def last_run(self):
         if self.controller.last_run():

@@ -32,7 +32,7 @@ class RunScreenModel(BaseScreenModel):
         self._screen_is_active = state
 
     def start_device_status_thread(self):
-        Thread(target=self.device_survey).start()
+        Thread(target=self.device_survey, daemon=True).start()
 
     def last_run(self):
         return self._device.start_run()

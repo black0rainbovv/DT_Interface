@@ -15,14 +15,16 @@
                 ['help-circle', lambda x: root.callback(x), 'Помощь'],
                 ['arrow-up-drop-circle-outline', lambda x: root.callback(x), 'Открыть\Закрыть'],
                 ['power', lambda x: root.callback(x), 'Выключение']
-                ]  
+                ]
+
+            left_action_items: [["chevron-left-circle-outline", lambda x: root.callback(x), 'Назад']]
 
         MDBoxLayout:
             id: box
             spacing: '32dp'
             padding: '48dp'
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint_y:1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+            size_hint: 1, 1
 
             MainCard:
                 on_release: root.last_run()
@@ -52,7 +54,7 @@
                 FitImage:
                     source: 'assets/images/book.png'
                     radius: 24, 24, 0, 0
-                    size_hint_y: 8
+                    size_hint_y: 12
                     pos_hint: {'top': 1}
 
                 MainLabel:

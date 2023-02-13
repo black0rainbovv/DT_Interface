@@ -64,13 +64,10 @@ class RunScreenView(BaseScreenView):
             Clock.unschedule(self.animation)
             self.set_screen_is_active(False)
 
-            content = Label(text='Программа амплификации завершила\
-                 свое выполнение.\
-                \nЧтобы посмотреть результаты запустите DTmaster\n\
-                и прочитайте последний запуск в приборе.',
+            content = Label(text='Программа закончила свое выполнение.\nЧтобы посмотреть результаты запустите DTmaster\nи прочитайте последний запуск в приборе.',
                             color='#F0FFFF',
                             pos_hint={'center_x': 0.5, 'center_y': 0.5},
-                            font_size='24sp',
+                            font_size='26sp',
                             font_name='assets/fonts/futuralightc.otf')
 
             popup = Popup(title='Информация', content=content,
@@ -81,5 +78,5 @@ class RunScreenView(BaseScreenView):
                           title_size='28sp',
                           title_font='assets/fonts/futuralightc.otf')
 
-            # content.bindn_press=self.switch_screen('main screen'))
             popup.open()
+            self.switch_screen('main screen')

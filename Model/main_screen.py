@@ -30,9 +30,9 @@ class MainScreenModel(BaseScreenModel):
         return self._device.get_serial_number()
 
     def start_device_status_thread(self):
-        Thread(target=self.device_info).start()
+        Thread(target=self.device_info, daemon=True).start()
 
-    def device_info(self):
+    def device_info(self, *dt):
         try:
             while self._screen_is_active:
                 self.tb_temperature = self._device.get_tb_temperature()
@@ -43,6 +43,8 @@ class MainScreenModel(BaseScreenModel):
         except Exception():
             if self._screen_is_active:
                 self.start_device_status_thread()
+            else:
+                self.clocks.unschedule()
 
     def tb_movement(self):
         self._device.open_close_tb()
