@@ -21,12 +21,12 @@ class GettingStartedView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         '''
-        
+
     def on_enter(self, *args):
         """
         Event called when the screen is displayed: the entering animation is
         complete.
-        """ 
+        """
 
     def callback(self, instance):
         if instance.icon == 'power':
@@ -38,14 +38,14 @@ class GettingStartedView(BaseScreenView):
         if self.controller.last_run():
             self.switch_screen('run screen')
         else:
-            self.popup = Popup(title='Внимание', 
-                            content=Label(text='Непредвиденная ошибка.',
-                                            color = "white",
-                                            font_size = "22sp",
-                                            font_name = "assets/fonts/futuralightc.otf"),
-                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
-                            size_hint = (0.4, 0.3),
-                            background = 'assets/images/bg_3.png',
-                            title_color = 'white',
-                            title_size = '28sp',
-                            title_font = 'assets/fonts/futuralightc.otf')
+            self.popup = Popup(title='Внимание',
+                               content=Label(text='Непредвиденная ошибка.',
+                                             color="white",
+                                             font_size="22sp",
+                                             font_name="assets/fonts/futuralightc.otf"),
+                               pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                               size_hint=(0.4, 0.3),
+                               background='assets/images/bg_3.png',
+                               title_color='white',
+                               title_size='28sp',
+                               title_font='assets/fonts/futuralightc.otf')

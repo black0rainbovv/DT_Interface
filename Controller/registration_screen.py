@@ -16,7 +16,9 @@ class RegistrationScreenController:
     def get_view(self) -> RegistrationScreenView:
         return self.view
 
-    def registration_user(self, user_name: str, user_password: str, user_second_pasword: str):
+    def registration_user(self, user_name: str,
+                          user_password: str,
+                          user_second_pasword: str):
         if self.password_verification(
             user_password, user_second_pasword
         ) and self.model.user_registration(user_name, user_password):
@@ -24,4 +26,3 @@ class RegistrationScreenController:
 
     def password_verification(self, user_password, user_second_pasword):
         return user_password == user_second_pasword and len(user_password) != 0
-

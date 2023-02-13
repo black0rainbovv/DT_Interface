@@ -3,7 +3,7 @@ from kivymd.uix.label import MDLabel
 
 class MainLabel(MDLabel):
     '''Implements the specified properties of MDLabel'''
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.size_hint_y = 2

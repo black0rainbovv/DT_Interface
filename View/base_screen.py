@@ -11,6 +11,7 @@ from kivymd.uix.screen import MDScreen
 
 from Utility.observer import Observer
 
+
 class BaseScreenView(ThemableBehavior, MDScreen, Observer):
     """
     A base class that implements a visual representation of the model data.
@@ -19,7 +20,8 @@ class BaseScreenView(ThemableBehavior, MDScreen, Observer):
 
     controller = ObjectProperty()
     """
-    Controller object - :class:`~Controller.controller_screen.ClassScreenControler`.
+    Controller object -\
+         :class:`~Controller.controller_screen.ClassScreenControler`.
 
     :attr:`controller` is an :class:`~kivy.properties.ObjectProperty`
     and defaults to `None`.
@@ -47,20 +49,14 @@ class BaseScreenView(ThemableBehavior, MDScreen, Observer):
 
     def __init__(self, **kw):
         super().__init__(**kw)
-        # Often you need to get access to the application object from the view
-        # class. You can do this using this attribute.
         self.app = MDApp.get_running_app()
-        # Adding a view class as observer.
         self.model.add_observer(self)
-        
 
     def on_enter(self, *args):
         """
         Event called when the screen is displayed: the entering animation is
         complete.
         """
-        # SHIFT_Y=dp(140)
-        # self.animation_bg_zoom()
 
         if not self.app.enable_animation:
             return
@@ -79,7 +75,9 @@ class BaseScreenView(ThemableBehavior, MDScreen, Observer):
             self.manager_screens.current = self.next_screen
             return
 
-        animation = Animation(height=self.ids.bg.height - self.SHIFT_Y, d=2, t="in_out_quart")
+        animation = Animation(height=self.ids.bg.height - self.SHIFT_Y,
+                              d=2,
+                              t="in_out_quart")
         animation.bind(on_complete=self.change_screen)
         animation.start(self.ids.bg)
 

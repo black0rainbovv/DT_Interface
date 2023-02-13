@@ -1,5 +1,6 @@
 from View.AboutDeviceScreen.about_device_screen import AboutDeviceScreenView
 
+
 class AboudDeviceController:
     """
     The `MainScreenController` class represents a controller implementation.
@@ -14,6 +15,6 @@ class AboudDeviceController:
 
     def get_view(self) -> AboutDeviceScreenView:
         return self.view
-        
+
     def get_device_survey(self):
         self.model.start_device_survey()

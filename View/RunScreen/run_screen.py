@@ -1,9 +1,10 @@
 from View.base_screen import BaseScreenView
-from View.RunScreen.components import CircularProgressBar
 
 from kivy.clock import Clock
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
+
+from View.RunScreen.components import CircularProgressBar
 
 
 class RunScreenView(BaseScreenView):
@@ -29,19 +30,25 @@ class RunScreenView(BaseScreenView):
         self._all_time = int(self.model.all_time)
         self._passed_time = int(self.model.passed_time)
         self._progress_bar.max = self._all_time
-        self.ids.temperature.text = f'Температура термоблока: {self.model.tb_temperature[0]}°C'
-        self.ids.cycles.text = f'Циклов прошло: {self.model.cycles}'
-        self.ids.time_left.text = f'Времени осталось: {self.model.time_left}'
-        
+        try:
+            self.ids.temperature.text = f'Температура термоблока: \
+                {self.model.tb_temperature[0]}°C'
+            self.ids.cycles.text = f'Циклов прошло: \
+                {self.model.cycles}'
+            self.ids.time_left.text = f'Времени осталось: \
+                {self.model.time_left}'
+        except Exception:
+            print(Exception)
+
     def on_enter(self, *args):
         """
         Event called when the screen is displayed: the entering animation is
         complete.
-        """ 
+        """
         self.set_screen_is_active(True)
         self.controller.start_device_survey()
 
-        Clock.schedule_interval(self.animate, 0.2)
+        self.animation = Clock.schedule_interval(self.animate, 0.2)
 
     def set_screen_is_active(self, state):
         self.controller.set_screen_is_active(state)
@@ -54,17 +61,25 @@ class RunScreenView(BaseScreenView):
             self._progress_bar.value = self._passed_time
 
         else:
-            popup = Popup(title='Информация', 
-                            content=Label(text='Программа закончила свое выполнение.\nЧтобы посмотреть результаты запустите DTmaster\nи прочитайте последний запуск в приборе.',
-                                            color = '#F0FFFF',
-                                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
-                                            font_size = '24sp',
-                                            font_name = 'assets/fonts/futuralightc.otf'),
-                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
-                            size_hint = (0.7, 0.4),
-                            background = 'assets/images/bg_3.png',
-                            title_color = 'white',
-                            title_size = '28sp',
-                            title_font = 'assets/fonts/futuralightc.otf')
+            Clock.unschedule(self.animation)
+            self.set_screen_is_active(False)
 
+            content = Label(text='Программа амплификации завершила\
+                 свое выполнение.\
+                \nЧтобы посмотреть результаты запустите DTmaster\n\
+                и прочитайте последний запуск в приборе.',
+                            color='#F0FFFF',
+                            pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                            font_size='24sp',
+                            font_name='assets/fonts/futuralightc.otf')
+
+            popup = Popup(title='Информация', content=content,
+                          pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                          size_hint=(0.7, 0.4),
+                          background='assets/images/bg_3.png',
+                          title_color='white',
+                          title_size='28sp',
+                          title_font='assets/fonts/futuralightc.otf')
+
+            # content.bindn_press=self.switch_screen('main screen'))
             popup.open()

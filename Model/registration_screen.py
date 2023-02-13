@@ -14,10 +14,9 @@ class RegistrationScreenModel(BaseScreenModel):
         self._observers = []
         self._file = 'data.txt'
         self.data = shelve
-        
 
     def user_registration(self, user_name, user_password):
-        if self.is_user_exests(user_name) == False:
+        if not self.is_user_exests(user_name):
             self.add_user(user_name, user_password)
             return True
 

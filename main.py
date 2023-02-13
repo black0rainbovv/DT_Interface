@@ -23,6 +23,7 @@ from kivymd.app import MDApp
 from kivymd.uix.screenmanager import MDScreenManager
 from View.screens import screens
 
+
 class DtUiKivy(MDApp):
     user_login = None
     serial_number = None

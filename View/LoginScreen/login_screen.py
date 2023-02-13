@@ -7,6 +7,7 @@ from kivy.uix.label import Label
 from View.base_screen import BaseScreenView
 from View.LoginScreen.components import FillField, CommonLabel
 
+
 class LoginScreenView(BaseScreenView):
     """Implements the login start screen in the user application."""
 
@@ -16,7 +17,7 @@ class LoginScreenView(BaseScreenView):
     FIELD_HEIGHT = NumericProperty(dp(52))
     PADDING = NumericProperty(dp(24))
 
-    def on_enter(self, *args):        
+    def on_enter(self, *args):
         if not self.app.enable_animation:
             animation = Animation(SHIFT_Y=dp(140), d=1, t="in_out_quart")
             animation.start(self)
@@ -41,33 +42,32 @@ class LoginScreenView(BaseScreenView):
         user_login = self.ids.field_login.text
         user_password = self.ids.field_password.text
 
-        if status := self.controller.login_user(user_login, user_password):
+        if self.controller.login_user(user_login, user_password):
             self.app.user_login = user_login
-            self.popup = Popup(title='Информация', 
-                            content=Label(text='Успешно.',
-                                            color = "white",
-                                            font_size = "22sp",
-                                            font_name = "assets/fonts/futuralightc.otf"),
-                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
-                            size_hint = (0.4, 0.3),
-                            background = 'assets/images/bg_3.png',
-                            title_color = 'white',
-                            title_size = '28sp',
-                            title_font = 'assets/fonts/futuralightc.otf')
+            self.popup = Popup(title='Информация',
+                               content=Label(text='Успешно.',
+                                             color="white",
+                                             font_size="22sp",
+                                             font_name="assets/fonts/futuralightc.otf"),
+                               pos_hint={'center_x': 0.5, 'center_y': 0.5},
+                               size_hint=(0.4, 0.3),
+                               background='assets/images/bg_3.png',
+                               title_color='white',
+                               title_size='28sp',
+                               title_font='assets/fonts/futuralightc.otf')
 
         else:
-            self.popup = Popup(title='Внимание', 
-                            content=Label(text='Ошибка',
-                                            color = "white",
-                                            font_size = "22sp",
-                                            font_name = "assets/fonts/futuralightc.otf"),
-                            pos_hint = {'center_x': 0.5,'center_y': 0.5},
-                            size_hint = (0.4, 0.3),
-                            background = 'assets/images/bg_3.png',
-                            title_color = 'white',
-                            title_size = '28sp',
-                            title_font = 'assets/fonts/futuralightc.otf',)
+            self.popup = Popup(title='Внимание',
+                               content=Label(text='Ошибка',
+                                             color="white",
+                                             font_size="22sp",
+                                             font_name="assets/fonts/futuralightc.otf"),
+                               pos_hint={'cter_x': 0.5, 'center_y': 0.5},
+                               size_hint=(0.4, 0.3),
+                               background='assets/images/bg_3.png',
+                               title_color='white',
+                               title_size='28sp',
+                               title_font='assets/fonts/futuralightc.otf',)
 
         self.popup.open()
         self.switch_screen('main screen')
-

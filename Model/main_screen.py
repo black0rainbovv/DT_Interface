@@ -27,21 +27,22 @@ class MainScreenModel(BaseScreenModel):
         self._screen_is_active = state
 
     def get_device_serial_number(self):
-        return self._device.get_serial_number()        
+        return self._device.get_serial_number()
 
     def start_device_status_thread(self):
         Thread(target=self.device_info).start()
 
     def device_info(self):
         try:
-            while self.screen_is_active:
+            while self._screen_is_active:
                 self.tb_temperature = self._device.get_tb_temperature()
                 sleep(0.05)
                 self.device_status = self._device.get_device_status()
                 self.notify_observers('main screen')
 
-        except ValueError:
-            print('Model device_info: ' ,ValueError)
+        except Exception():
+            if self._screen_is_active:
+                self.start_device_status_thread()
 
     def tb_movement(self):
         self._device.open_close_tb()

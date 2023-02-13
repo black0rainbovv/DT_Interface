@@ -1,5 +1,6 @@
 from kivymd.uix.label import MDLabel
 
+
 class CommonLabel(MDLabel):
 
     """It is just a base class for a label with common parameters."""

@@ -1,5 +1,5 @@
+import contextlib
 from View.base_screen import BaseScreenView
-from View.MainScreen.components import MainLabel, MainCard
 
 
 class MainScreenView(BaseScreenView):
@@ -20,21 +20,19 @@ class MainScreenView(BaseScreenView):
         '''
 
         status = self.model.device_status
-        self.ids.temperature.text = f'Температура термоблока:\n              {self.model.tb_temperature[0]}°C'
+        with contextlib.suppress(Exception):
+            self.ids.temperature.text = f'Температура термоблока:\
+                \n              {self.model.tb_temperature[0]}°C'
+            self.ids.device_status.text = (
+                'Состояние прибора:\n              готов'
+                if int(status) == 5
+                else 'Состояние прибора:\n              прогрев'
+            )
 
-        if int(status) == 5:
-            self.ids.device_status.text = 'Состояние прибора:\n              готов'
-        else:
-            self.ids.device_status.text = 'Состояние прибора:\n              прогрев'
-        
     def on_enter(self, *args):
-        """
-        Event called when the screen is displayed: the entering animation is
-        complete.
-        """ 
         self.set_screen_is_active(True)
         self.controller.get_device_status()
-            
+
         if self.app.user_login is None:
             self.ids.name_label.text = 'Пользователь: Гость'
         else:

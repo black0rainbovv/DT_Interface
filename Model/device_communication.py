@@ -28,8 +28,8 @@ class Device():
         try:
             return self._message_to_device(controller, message)
         except SerialException:
-            print('Could not open port')
-            return ''
+            sleep(0.5)
+            return self._message_to_device(controller, message)
 
     def _message_to_device(self, controller, message):
         self._can.open()
@@ -99,7 +99,7 @@ class Device():
             expos = int(data) * 0.308
             expos_list.append(round(expos))
         return expos_list
-    
+
     def get_tb_number(self):
         data = self.can_message('HRTY', self._temperature_controller)
         return data[4:]
@@ -113,7 +113,7 @@ class Device():
         splitted = data.split(' ')
         self.passed_time = splitted[1]
         self.all_time = splitted[2][:3]
-        return splitted[0][4:]        
+        return splitted[0][4:]
 
     def get_cycles_passed(self):
         data = self.can_message('XGS', self._temperature_controller)

@@ -16,9 +16,9 @@ class SettingScreenView(BaseScreenView):
         The view in this method tracks these changes and updates the UI
         according to these changes.
         '''
-        
+
     def on_enter(self, *args):
         """
         Event called when the screen is displayed: the entering animation is
         complete.
-        """ 
+        """

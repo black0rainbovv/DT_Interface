@@ -3,7 +3,7 @@ from kivymd.uix.card import MDCard
 
 class SettingCard(MDCard):
     '''Implements the specified properties of MDCard'''
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.orientation = "vertical"

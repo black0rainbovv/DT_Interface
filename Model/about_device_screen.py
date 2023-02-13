@@ -1,7 +1,6 @@
 from Model.base_model import BaseScreenModel
 from Model.device_communication import Device
 from threading import Thread
-from time import sleep
 
 
 class AboutDeviceScreenModel(BaseScreenModel):

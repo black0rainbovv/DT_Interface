@@ -1,6 +1,5 @@
 from View.GettingStartedScreen.getting_started_screen import GettingStartedView
 
-import serial
 
 class GettingStartedController:
     """

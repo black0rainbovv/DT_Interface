@@ -57,7 +57,7 @@ class RegistrationScreenView(BaseScreenView):
                             title_color = 'white',
                             title_size = '28sp',
                             title_font = 'assets/fonts/futuralightc.otf',)
-            self.switch_screen('main screen')
+            self.switch_screen('login screen')
         else:
             self.popup = Popup(title='Внимание', 
                             content=Label(text='Ошибка',

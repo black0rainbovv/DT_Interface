@@ -1,6 +1,5 @@
 from View.SettingScreen.setting_screen import SettingScreenView
 
-import serial
 
 class SettingScreenController:
     """

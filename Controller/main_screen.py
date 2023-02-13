@@ -1,6 +1,5 @@
 from View.MainScreen.main_screen import MainScreenView
 
-import serial
 
 class MainScreenController:
     """
